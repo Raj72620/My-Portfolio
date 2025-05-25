@@ -23,9 +23,7 @@ const Collaborate: FC = () => {
 
     try {
       // Use absolute URL in production, relative in development
-      const apiUrl = process.env.NODE_ENV === 'development' 
-        ? 'http://localhost:5000/api/collaborate' 
-        : '/api/collaborate';
+     const apiUrl = import.meta.env.VITE_API_URL + '/api/collaborate';
 
       const response = await fetch(apiUrl, {
         method: 'POST',

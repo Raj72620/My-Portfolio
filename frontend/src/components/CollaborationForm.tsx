@@ -25,5 +25,4 @@ const CollaborationForm = () => {
   );
 };
 
-// Add this export statement
 export default CollaborationForm;
