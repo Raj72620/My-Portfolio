@@ -1,0 +1,402 @@
+.projectsSection {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.sectionVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 0 auto 50px;
+  color: #6ba9dc;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.titleText {
+  position: relative;
+  z-index: 2;
+}
+
+.titleShine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 20%,
+    rgba(107,169,220,0.3) 50%,
+    rgba(255,255,255,0) 80%
+  );
+  transform: skewX(-45deg) translateZ(0);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { transform: skewX(-45deg) translateX(-150%); }
+  100% { transform: skewX(-45deg) translateX(150%); }
+}
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.projectCard {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tiltContainer {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+}
+
+.cardGlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(107, 169, 220, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .cardGlow {
+  opacity: 1;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 169, 220, 0.2);
+  transition: transform 0.6s, box-shadow 0.3s;
+}
+
+.projectCard:hover .cardInner {
+  box-shadow: 0 15px 40px rgba(107, 169, 220, 0.2);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardFront {
+  justify-content: space-between;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(16, 24, 39, 0.9), rgba(22, 33, 62, 0.9));
+}
+
+.imageContainer {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);
+}
+
+.techStack {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.techPill {
+  background: rgba(107, 169, 220, 0.2);
+  color: #6ba9dc;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(107, 169, 220, 0.3);
+}
+
+.cardFront h3 {
+  margin: 15px 0 5px;
+  font-size: 1.6rem;
+  color: #6ba9dc;
+  text-align: center;
+}
+
+.projectType {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.githubLink,
+.demoLink {
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.githubLink {
+  background: rgba(255, 255, 255, 0.1);
+  color: #6ba9dc;
+}
+
+.demoLink {
+  background: #6ba9dc;
+  color: white;
+}
+
+.githubLink:hover {
+  background: rgba(107, 169, 220, 0.2);
+}
+
+.demoLink:hover {
+  background: #5a94c0;
+}
+
+.linkShine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.githubLink:hover .linkShine,
+.demoLink:hover .linkShine {
+  width: 100%;
+}
+
+/* Enhanced View All Projects Container */
+.viewAllContainer {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px dashed rgba(107, 169, 220, 0.3);
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+
+.viewAllContainer:hover {
+  background: rgba(107, 169, 220, 0.08);
+  border-color: #6ba9dc;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(107, 169, 220, 0.2);
+}
+
+.viewAllContent {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.viewAllContainer:hover .viewAllContent {
+  transform: scale(1.05);
+}
+
+.viewAllContent h3 {
+  color: #6ba9dc;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.viewAllContainer:hover .viewAllContent h3 {
+  text-shadow: 0 0 10px rgba(107, 169, 220, 0.5);
+}
+
+.viewAllContent p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.viewAllContainer:hover .viewAllContent p {
+  color: white;
+}
+
+.viewAllArrow {
+  font-size: 2rem;
+  color: #6ba9dc;
+  display: flex;
+  justify-content: center;
+}
+
+.arrowCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(107, 169, 220, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.viewAllContainer:hover .arrowCircle {
+  background: rgba(107, 169, 220, 0.2);
+  transform: rotate(-45deg);
+}
+
+.arrowLine {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #6ba9dc;
+  left: 15px;
+  transition: all 0.3s ease;
+}
+
+.arrowHead {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #6ba9dc;
+  border-top: 2px solid #6ba9dc;
+  right: 18px;
+  top: 25px;
+  transform: rotate(45deg);
+}
+
+.viewAllGlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(107, 169, 220, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.viewAllContainer:hover .viewAllGlow {
+  opacity: 1;
+}
+
+/* Animation for the container */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(107, 169, 220, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(107, 169, 220, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(107, 169, 220, 0); }
+}
+
+.viewAllContainer {
+  animation: pulseGlow 3s infinite;
+}
+
+.viewAllContainer:hover {
+  animation: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .projectsContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .projectCard {
+    height: 350px;
+  }
+  
+  .cardFront h3 {
+    font-size: 1.3rem;
+  }
+  
+  .viewAllContainer {
+    height: 200px;
+    padding: 20px;
+  }
+  
+  .viewAllContent h3 {
+    font-size: 1.4rem;
+  }
+  
+  .arrowCircle {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,374 @@
+/* ===== About Section ===== */
+.secondSection {
+  max-width: 90vw;
+  margin: 20px auto;
+  padding: 20px 0;
+  height: auto;
+  overflow: hidden;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.leftSide,
+.rightSide {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: rgba(107, 169, 220, 0.5);
+  box-shadow: 0 0 5px rgba(107, 169, 220, 0.8);
+  transform: translateX(-50%);
+}
+
+.node {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+.nodeVisible {
+  opacity: 1 !important;
+}
+
+.nodeDisc {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  background: rgb(107, 169, 220);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px rgba(107, 169, 220, 0.8);
+  animation: rotateDisc 4s linear infinite;
+}
+
+@keyframes rotateDisc {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.nodeContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  gap: 20px;
+}
+
+.left { flex-direction: row; }
+.right { flex-direction: row-reverse; }
+
+.imageContainer {
+  position: relative;
+  width: 45%;
+  min-width: 180px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(107, 169, 220, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.imageContainer:hover {
+  transform: scale(1.03);
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.shiningEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(107, 169, 220, 0.3), transparent);
+  animation: shine 3s infinite alternate;
+}
+
+@keyframes shine {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.marksheetLinkBox {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: rgba(107, 169, 220, 0.8);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  box-shadow: 0 0 5px rgba(107, 169, 220, 0.8);
+  transition: background 0.3s ease;
+}
+
+.marksheetLinkBox:hover {
+  background: rgba(107, 169, 220, 1);
+}
+
+.info {
+  width: 50%;
+  text-align: left;
+}
+
+.info h3 {
+  font-size: 1.3rem;
+  color: rgb(107, 169, 220);
+  margin-bottom: 10px;
+}
+
+.info p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* About Me Section */
+.aboutMeHeading h2 {
+  font-size: 2rem;
+  color: rgb(107, 169, 220);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.aboutMeBox {
+  background-color: rgba(14, 8, 33, 0.1);
+  border: 1px solid rgba(102, 156, 193, 0.3);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutMeDetails {
+  background-color: rgba(14, 8, 33, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  flex: 1;
+}
+
+.aboutMeDetails p {
+  font-size: 1rem;
+  margin: 20px 0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aboutMeDetails p strong {
+  color: rgb(107, 169, 220);
+  width: 35%;
+  font-weight: 500;
+  margin-right: 15px;
+}
+
+.aboutMeDetails p span {
+  width: 65%;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.9);
+}
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  z-index: 1001;
+}
+
+.marksheetImage {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+/* Responsive adjustments for modal */
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 15px;
+  }
+  
+  .closeButton {
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 10px;
+  }
+  
+  .closeButton {
+    font-size: 18px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .flexContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .timeline {
+    max-width: 800px;
+  }
+  
+  .timeline::before {
+    left: 20px;
+  }
+
+  .nodeDisc {
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .secondSection {
+    max-width: 95vw;
+    padding: 10px 0;
+  }
+
+  .nodeContent {
+    flex-direction: column !important;
+    gap: 25px;
+  }
+
+  .imageContainer {
+    width: 50% !important;
+    height: 220px;
+  }
+
+  .info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .info h3 {
+    font-size: 1.5rem;
+  }
+
+  .info p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .aboutMeBox {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .aboutMeDetails p {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    margin: 15px 0;
+  }
+
+  .aboutMeDetails p strong,
+  .aboutMeDetails p span {
+    width: 100%;
+    text-align: center;
+  }
+
+  .aboutMeDetails p strong {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageContainer {
+    height: 180px;
+  }
+
+  .info h3 {
+    font-size: 1.3rem;
+  }
+
+  .info p {
+    font-size: 0.9rem;
+  }
+
+  .aboutMeDetails p {
+    font-size: 0.95rem;
+  }
+
+  .marksheetLinkBox {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,76 @@
+.certificateViewerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+}
+
+.backButton {
+  background: rgba(107, 169, 220, 0.1);
+  color: #6ba9dc;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.backButton:hover {
+  background: rgba(107, 169, 220, 0.2);
+  transform: translateX(-5px);
+}
+
+.certificateImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.certificateImage {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.errorContainer p {
+  font-size: 1.5rem;
+  color: #dc6b6b;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .certificateViewerContainer {
+    padding: 20px 10px;
+  }
+  
+  .backButton {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .certificateImageContainer {
+    padding: 10px;
+  }
+}

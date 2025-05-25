@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap');
+
+.hero {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0a0a1a 0%, #14142e 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Enhanced Left Section */
+.leftSection {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.introHeader {
+  margin-bottom: 1.5rem;
+}
+
+.nameTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ffffff 0%, #8ab4d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.profession {
+  font-size: 1.3rem;
+  color: #8ab4d4;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.infoCard {
+  background: rgba(20, 22, 40, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.8rem;
+  border: 1px solid rgba(107, 169, 220, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.infoLine {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.bullet {
+  color: #6ba9dc;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.skillsContainer {
+  margin-top: 1rem;
+}
+
+.skillsTitle {
+  font-size: 1.3rem;
+  color: #6ba9dc;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.skillsTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #6ba9dc, transparent);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.8rem;
+}
+
+.skillBadge {
+  background: rgba(107, 169, 220, 0.1);
+  color: #8ab4d4;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid rgba(107, 169, 220, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skillBadge:hover {
+  background: rgba(107, 169, 220, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Right Section with Signature */
+.rightSection {
+  order: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
+}
+
+.profileWithSignature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.helloContainer {
+  text-align: center;
+  z-index: 2;
+}
+
+.helloText {
+  font-size: 3rem;
+  color: #6ba9dc;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(107, 169, 220, 0.5);
+}
+
+.helloSubtext {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
+}
+
+.profileContainer {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circularBorder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(107, 169, 220, 0.3);
+  box-shadow: 0 0 30px rgba(107, 169, 220, 0.2);
+  animation: pulse 3s infinite alternate;
+}
+
+.circularGradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #6ba9dc 0deg,
+    #8a6bdc 120deg,
+    #dc6b6b 240deg,
+    #6ba9dc 360deg
+  );
+  filter: blur(15px);
+  opacity: 0.15;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gradientOverlay {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 60%,
+    rgba(20, 20, 46, 0.7) 90%
+  );
+  pointer-events: none;
+}
+
+/* Signature positioned at bottom right of photo */
+.signatureContainer {
+  margin-top: -20px;
+  align-self: flex-end;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.signatureSvg {
+  width: 180px;
+  height: 60px;
+}
+
+.signatureText {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: #8ab4d4;
+  margin-top: -15px;
+  background: linear-gradient(90deg, #6ba9dc 0%, #8a6bdc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* LinkedIn Link Styles */
+.linkedinLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(10, 102, 194, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  border: 1px solid rgba(10, 102, 194, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.linkedinLink:hover {
+  background: rgba(10, 102, 194, 0.2);
+  color: #fff;
+}
+
+.linkedinLink::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    transparent 45%,
+    rgba(10, 102, 194, 0.4) 50%,
+    transparent 55%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
+  opacity: 0;
+}
+
+@keyframes shine {
+  0% {
+    transform: rotate(30deg) translate(-30%, -30%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(30deg) translate(30%, 30%);
+    opacity: 0;
+  }
+}
+
+.linkedinLink:hover::before {
+  animation: shine 3s infinite;
+}
+
+.linkedinIcon {
+  font-size: 1.2rem;
+  color: #0a66c2;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { box-shadow: 0 0 30px rgba(107, 169, 220, 0.2); }
+  100% { box-shadow: 0 0 40px rgba(107, 169, 220, 0.4); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 4rem 1rem;
+    gap: 3rem;
+  }
+
+  .leftSection {
+    order: 2;
+    text-align: center;
+  }
+
+  .rightSection {
+    order: 1;
+  }
+
+  .nameTitle {
+    font-size: 2.2rem;
+  }
+
+  .profession {
+    font-size: 1.1rem;
+  }
+
+  .infoCard {
+    padding: 1.2rem;
+  }
+
+  .infoLine {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profileContainer {
+    width: 280px;
+    height: 280px;
+  }
+
+  .signatureContainer {
+    align-self: center;
+    margin-right: 0;
+    margin-top: 10px;
+  }
+
+  .signatureSvg {
+    width: 150px;
+  }
+
+  .signatureText {
+    font-size: 1.3rem;
+  }
+}
+
+@supports (font-variation-settings: normal) {
+  body {
+    font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}

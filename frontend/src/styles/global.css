@@ -1,0 +1,187 @@
+/* Global styles and animations */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+:root {
+  --primary-color: #6ba9dc;
+  --dark-bg: #000021;
+  --light-text: #ffffff;
+  --cyan-accent: #6ba9dc;
+  --green-accent: #4CAF50;
+  --yellow-accent: #FFC107;
+  --pink-accent: #E91E63;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 169, 220, 0.6);
+  border-radius: 5px;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes rotateDisc {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Third-party library overrides */
+.vanilla-tilt {
+  transition: transform 0.3s ease !important;
+}
+
+/* Global animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Certificate Viewer Styles */
+.certificate-viewer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 2rem;
+}
+
+.certificate-image {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(107, 169, 220, 0.5);
+}
+
+.error-container {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Skills Section Styles */
+.skillsSection {
+  padding: 60px 10%;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.skillsSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(107, 169, 220, 0.2), transparent 80%);
+  animation: rotateGlow 10s linear infinite;
+  z-index: -1;
+}
+
+.sectionVisible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skillHeadings,
+  .skillsContent,
+  .certificatesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .skillItem {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+
+  .certificateBox {
+    padding: 15px;
+  }
+
+  .certificate-viewer-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsSection {
+    padding: 40px 5%;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .certificationsTitle {
+    font-size: 1.5rem;
+  }
+}

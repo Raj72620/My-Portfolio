@@ -1,0 +1,219 @@
+.collaborationSection {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: white;
+  text-align: center;
+}
+
+.sectionHeading {
+  font-size: 2.5rem;
+  color: #6ba9dc;
+  margin-bottom: 20px;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+}
+
+.collaborationContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 20px;
+}
+
+.collaborationForm {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  border-color: #6ba9dc;
+  outline: none;
+  box-shadow: 0 0 10px rgba(107, 169, 220, 0.3);
+}
+
+.submitButton {
+  background: #6ba9dc;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.submitButton:hover {
+  background: #5a95c4;
+}
+
+.collaborationInfo {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.infoHeading {
+  color: #6ba9dc;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.benefitIcon {
+  font-size: 1.5rem;
+}
+
+.connectSection {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.connectHeading {
+  color: #6ba9dc;
+  margin-bottom: 20px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+
+.formMessage {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(107, 169, 220, 0.1);
+  color: #6ba9dc;
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Message styles */
+.formMessage {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease;
+}
+
+.formMessage.success {
+  background: rgba(107, 169, 220, 0.1);
+  color: #6ba9dc;
+  border: 1px solid rgba(107, 169, 220, 0.3);
+}
+
+.formMessage.error {
+  background: rgba(220, 107, 107, 0.1);
+  color: #dc6b6b;
+  border: 1px solid rgba(220, 107, 107, 0.3);
+}
+
+/* Social link */
+.socialLink {
+  color: #8ab4d4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #6ba9dc;
+  text-decoration: underline;
+}
+
+/* Form validation */
+.formInput:invalid,
+.formTextarea:invalid {
+  border-color: #dc6b6b;
+}
+
+.formInput:valid,
+.formTextarea:valid {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .collaborationContainer {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  
+  .sectionHeading {
+    font-size: 2rem;
+  }
+  
+  .collaborationForm,
+  .collaborationInfo {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,131 @@
+.allProjectsContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: white;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #6ba9dc;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.backButton {
+  background: rgba(107, 169, 220, 0.1);
+  color: #6ba9dc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.backButton:hover {
+  background: rgba(107, 169, 220, 0.2);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 30px;
+}
+
+.projectCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(107, 169, 220, 0.2);
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(107, 169, 220, 0.2);
+}
+
+.projectImageContainer {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.05);
+}
+
+.techStack {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.techPill {
+  background: rgba(107, 169, 220, 0.2);
+  color: #6ba9dc;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(107, 169, 220, 0.3);
+}
+
+.projectInfo {
+  padding: 20px;
+}
+
+.projectInfo h3 {
+  color: #6ba9dc;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.projectType {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.projectDescription {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .projectImageContainer {
+    height: 200px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+}
