@@ -13,7 +13,7 @@ const ProgrammerIntro: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Why I Love Programming</h1>
+        <h1 className={styles.title}>Hello Coders</h1>
         
         <div className={styles.section}>
           <h2 className={styles.subtitle}>My Journey</h2>
