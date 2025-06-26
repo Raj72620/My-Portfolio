@@ -1,5 +1,5 @@
 .projectsSection {
-  padding: 100px 20px;
+  padding: 80px 0;
   background: linear-gradient(135deg, #1a1a2e, #16213e);
   position: relative;
   overflow: hidden;
@@ -14,25 +14,26 @@
 }
 
 .container {
-  max-width: 1300px;
-  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 20px;
 }
 
 .sectionTitle {
   text-align: center;
   font-size: 2.5rem;
-  margin: 0 auto 50px;
+  margin: 0 auto 40px;
   color: #6ba9dc;
   position: relative;
-  display: block;
-  width: 100%;
-  padding: 0 1rem;
+  display: inline-block;
+  padding: 0 30px;
 }
 
 .titleText {
   position: relative;
   z-index: 2;
 }
+
+
 
 .titleShine {
   position: absolute;
@@ -56,99 +57,60 @@
   100% { transform: skewX(-45deg) translateX(150%); }
 }
 
-.projectsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  padding: 0 20px;
+.horizontalScrollWrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.horizontalScrollWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontalCarousel {
+  display: inline-flex;
+  gap: 25px;
+  padding: 10px 30px;
+  will-change: transform;
 }
 
 .projectCard {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  border-radius: 15px;
+  flex: 0 0 280px;
+  height: 380px;
+  border-radius: 16px;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 169, 220, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.tiltContainer {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .projectCard:hover {
-  transform: translateY(-5px);
-}
-
-.cardGlow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(107, 169, 220, 0.3);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.projectCard:hover .cardGlow {
-  opacity: 1;
-}
-
-.cardInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(107, 169, 220, 0.2);
-  transition: transform 0.6s, box-shadow 0.3s;
-}
-
-.projectCard:hover .cardInner {
-  box-shadow: 0 15px 40px rgba(107, 169, 220, 0.2);
-}
-
-.cardFront,
-.cardBack {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 15px;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cardFront {
-  justify-content: space-between;
-}
-
-.cardBack {
-  transform: rotateY(180deg);
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, rgba(16, 24, 39, 0.9), rgba(22, 33, 62, 0.9));
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(107, 169, 220, 0.2);
+  border-color: rgba(107, 169, 220, 0.4);
 }
 
 .imageContainer {
-  width: 100%;
-  height: 220px;
-  border-radius: 10px;
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
 }
 
 .projectImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.1);
 }
 
 .imageOverlay {
@@ -157,246 +119,104 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+}
+
+.projectContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 200px);
+}
+
+.projectContent h3 {
+  color: #6ba9dc;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.projectContent p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
 }
 
 .techStack {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
-  padding: 0 15px;
+  gap: 8px;
 }
 
-.techPill {
-  background: rgba(107, 169, 220, 0.2);
+.techStack span {
+  background: rgba(107, 169, 220, 0.15);
   color: #6ba9dc;
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;
   border: 1px solid rgba(107, 169, 220, 0.3);
-}
-
-.cardFront h3 {
-  margin: 15px 0 5px;
-  font-size: 1.6rem;
-  color: #6ba9dc;
-  text-align: center;
-}
-
-.projectType {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.projectLinks {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.githubLink,
-.demoLink {
-  padding: 8px 20px;
-  border-radius: 20px;
-  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.githubLink {
-  background: rgba(255, 255, 255, 0.1);
-  color: #6ba9dc;
-}
-
-.demoLink {
-  background: #6ba9dc;
-  color: white;
-}
-
-.githubLink:hover {
-  background: rgba(107, 169, 220, 0.2);
-}
-
-.demoLink:hover {
-  background: #5a94c0;
-}
-
-.linkShine {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-
-.githubLink:hover .linkShine,
-.demoLink:hover .linkShine {
-  width: 100%;
-}
-
-/* Enhanced View All Projects Container */
-.viewAllContainer {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  padding: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 2px dashed rgba(107, 169, 220, 0.3);
-  height: 420px;
-  position: relative;
-  overflow: hidden;
-}
-
-.viewAllContainer:hover {
-  background: rgba(107, 169, 220, 0.08);
-  border-color: #6ba9dc;
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(107, 169, 220, 0.2);
-}
-
-.viewAllContent {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.4s ease;
-}
-
-.viewAllContainer:hover .viewAllContent {
-  transform: scale(1.05);
-}
-
-.viewAllContent h3 {
-  color: #6ba9dc;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-}
-
-.viewAllContainer:hover .viewAllContent h3 {
-  text-shadow: 0 0 10px rgba(107, 169, 220, 0.5);
-}
-
-.viewAllContent p {
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-}
-
-.viewAllContainer:hover .viewAllContent p {
-  color: white;
-}
-
-.viewAllArrow {
-  font-size: 2rem;
-  color: #6ba9dc;
-  display: flex;
-  justify-content: center;
-}
-
-.arrowCircle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(107, 169, 220, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-.viewAllContainer:hover .arrowCircle {
-  background: rgba(107, 169, 220, 0.2);
-  transform: rotate(-45deg);
-}
-
-.arrowLine {
-  position: absolute;
-  width: 20px;
-  height: 2px;
-  background: #6ba9dc;
-  left: 15px;
-  transition: all 0.3s ease;
-}
-
-.arrowHead {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid #6ba9dc;
-  border-top: 2px solid #6ba9dc;
-  right: 18px;
-  top: 25px;
-  transform: rotate(45deg);
-}
-
-.viewAllGlow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at center,
-    rgba(107, 169, 220, 0.1) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.viewAllContainer:hover .viewAllGlow {
-  opacity: 1;
-}
-
-/* Animation for the container */
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(107, 169, 220, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(107, 169, 220, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(107, 169, 220, 0); }
-}
-
-.viewAllContainer {
-  animation: pulseGlow 3s infinite;
-}
-
-.viewAllContainer:hover {
-  animation: none;
+.projectCard:hover .techStack span {
+  background: rgba(107, 169, 220, 0.25);
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .projectsContainer {
-    grid-template-columns: 1fr;
+  .projectsSection {
+    padding: 60px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
   
   .projectCard {
-    height: 350px;
+    flex: 0 0 240px;
+    height: 340px;
   }
   
-  .cardFront h3 {
-    font-size: 1.3rem;
+  .imageContainer {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+    padding: 0 20px;
   }
   
-  .viewAllContainer {
-    height: 200px;
-    padding: 20px;
+  .horizontalCarousel {
+    gap: 15px;
+    padding: 10px 20px;
   }
   
-  .viewAllContent h3 {
-    font-size: 1.4rem;
+  .projectCard {
+    flex: 0 0 200px;
+    height: 300px;
   }
   
-  .arrowCircle {
-    width: 50px;
-    height: 50px;
+  .imageContainer {
+    height: 150px;
+  }
+  
+  .projectContent {
+    padding: 15px;
+  }
+  
+  .projectContent h3 {
+    font-size: 1.1rem;
+  }
+  
+  .projectContent p {
+    font-size: 0.8rem;
+  }
+  
+  .techStack span {
+    font-size: 0.7rem;
+    padding: 3px 10px;
   }
 }

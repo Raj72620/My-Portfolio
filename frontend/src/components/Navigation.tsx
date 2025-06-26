@@ -36,7 +36,6 @@ const Navigation: FC = () => {
   };
 
   const handleNavClick = (id: SectionId) => {
-    // Update URL without page reload
     window.history.pushState(null, '', `#${id}`);
     closeMenu();
   };

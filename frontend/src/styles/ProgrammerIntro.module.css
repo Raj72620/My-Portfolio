@@ -7,16 +7,37 @@
   background: linear-gradient(135deg, #0a0a1a, #14142e);
   color: white;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.particlesBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .content {
   max-width: 800px;
   width: 100%;
-  padding: 2rem;
+  padding: 3rem;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(107, 169, 220, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 169, 220, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+
+.titleContainer {
+  height: 120px;
+  margin-bottom: 3rem;
+  perspective: 1000px;
 }
 
 .title {
@@ -24,12 +45,25 @@
   color: #6ba9dc;
   margin-bottom: 2rem;
   text-align: center;
+  text-shadow: 0 0 10px rgba(107, 169, 220, 0.5);
 }
 
 .subtitle {
   font-size: 1.8rem;
   color: #8ab4d4;
   margin: 1.5rem 0 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #6ba9dc, transparent);
 }
 
 .text {
@@ -46,9 +80,15 @@
 
 .goalsList li {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.8rem;
   margin-bottom: 0.8rem;
   font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.goalsList li:hover {
+  transform: translateX(5px);
+  color: #6ba9dc;
 }
 
 .goalsList li::before {
@@ -56,27 +96,74 @@
   position: absolute;
   left: 0;
   color: #6ba9dc;
+  font-size: 1.3rem;
 }
 
 .enterButton {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin: 3rem auto 0;
-  padding: 12px 30px;
-  background: #6ba9dc;
+  padding: 15px 35px;
+  background: linear-gradient(45deg, #6ba9dc, #5a95c4);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.enterButton:hover {
-  background: #5a95c4;
-  transform: translateY(-2px);
+.enterButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #5a95c4, #6ba9dc);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.enterButton:hover::before {
+  opacity: 1;
+}
+
+.portalEffect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107, 169, 220, 0.8) 0%, rgba(107, 169, 220, 0) 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.portalExit {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #6ba9dc 0%, rgba(107, 169, 220, 0) 70%);
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
+  .content {
+    padding: 2rem;
+  }
+  
   .title {
     font-size: 2rem;
   }
@@ -87,5 +174,9 @@
   
   .text {
     font-size: 1rem;
+  }
+  
+  .titleContainer {
+    height: 80px;
   }
 }

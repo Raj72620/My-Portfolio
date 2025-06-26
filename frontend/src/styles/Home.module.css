@@ -315,6 +315,131 @@
   color: #0a66c2;
 }
 
+.emailLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(220, 53, 69, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.emailLink:hover {
+  background: rgba(220, 53, 69, 0.2);
+  color: #fff;
+}
+
+.emailIcon {
+  width: 18px;
+  height: 18px;
+  color: #dc3545;
+}
+
+.emailLink::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    transparent 45%,
+    rgba(220, 53, 69, 0.4) 50%,
+    transparent 55%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
+  opacity: 0;
+}
+
+
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.githubButton, .resumeButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.githubButton {
+  background: linear-gradient(135deg, #333 0%, #000 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.resumeButton {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.githubButton:hover {
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  transform: translateY(-3px);
+}
+
+.resumeButton:hover {
+  background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
+  transform: translateY(-3px);
+}
+
+.buttonIcon {
+  font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .githubButton, .resumeButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: rotate(30deg) translate(-30%, -30%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(30deg) translate(30%, 30%);
+    opacity: 0;
+  }
+}
+
+.emailLink:hover::before {
+  animation: shine 3s infinite;
+}
+
 /* Animations */
 @keyframes pulse {
   0% { box-shadow: 0 0 30px rgba(107, 169, 220, 0.2); }

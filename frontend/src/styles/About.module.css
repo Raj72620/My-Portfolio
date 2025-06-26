@@ -254,6 +254,7 @@
   border-radius: 4px;
 }
 
+
 /* Responsive adjustments for modal */
 @media (max-width: 768px) {
   .modalContent {

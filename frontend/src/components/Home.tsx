@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa';
 import styles from '../styles/Home.module.css';
 import photo1 from '../assets/coder.jpg';
 import photo2 from '../assets/hackathon2.jpg';
@@ -41,7 +41,11 @@ const Home = () => {
     visible: { 
       pathLength: 1,
       opacity: 1,
-      transition: { duration: 1.5, ease: "easeInOut" }
+      transition: { 
+        duration: 1.5, 
+        ease: "easeInOut" as const,
+        delay: 0.2 
+      }
     }
   };
 
@@ -51,6 +55,28 @@ const Home = () => {
     exit: { opacity: 0, scale: 0.9 }
   };
 
+const buttonVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20 
+  },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.8 + i * 0.1,
+      type: "spring" as const,
+      stiffness: 100
+    }
+  }),
+  hover: {
+    scale: 1.05,
+    y: -3,
+    transition: { 
+      duration: 0.2 
+    }
+  }
+} as const; // Add 'as const' assertion
   return (
     <section className={styles.hero} id="home">
       <div className={styles.container}>
@@ -90,34 +116,37 @@ const Home = () => {
             ))}
           </div>
 
-          <div className={styles.skillsContainer}>
-            <motion.h3 
+          {/* Action Buttons Section */}
+          <div className={styles.actionButtons}>
+            <motion.a
+              href="https://github.com/yourusername" // Replace with your GitHub URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.githubButton}
+              variants={buttonVariants}
               initial="hidden"
               animate="visible"
-              variants={introVariants}
-              transition={{ delay: 0.8 }}
-              className={styles.skillsTitle}
+              custom={0}
+              whileHover="hover"
             >
-              Technical Skills
-            </motion.h3>
-            <div className={styles.skillsGrid}>
-              {["Java", "React", "Node.js", "Express", "MongoDB","SQL" , "Version Control"].map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  initial="hidden"
-                  animate="visible"
-                  variants={introVariants}
-                  transition={{ 
-                    delay: 0.9 + index * 0.1,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  className={styles.skillBadge}
-                >
-                  {skill}
-                </motion.div>
-              ))}
-            </div>
+              <FaGithub className={styles.buttonIcon} />
+              <span>GitHub</span>
+            </motion.a>
+
+            <motion.a
+              href="/path-to-your-resume.pdf" // Replace with your resume URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resumeButton}
+              variants={buttonVariants}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+              whileHover="hover"
+            >
+              <FaFilePdf className={styles.buttonIcon} />
+              <span>Resume</span>
+            </motion.a>
           </div>
         </div>
 
@@ -206,20 +235,35 @@ const Home = () => {
               </div>
             )}
           </AnimatePresence>
-          {/* Add this right after the signatureContainer closing tag */}
-<motion.a
-  href="http://www.linkedin.com/in/nishanth-singh"
-  target="_blank"
-  rel="noopener noreferrer"
-  className={styles.linkedinLink}
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 3 }}
-  whileHover={{ scale: 1.05 }}
->
-  <FaLinkedin className={styles.linkedinIcon} />
-  <span>LinkedIn</span>
-</motion.a>
+          {/* Contact Links */}
+          <motion.a
+            href="http://www.linkedin.com/in/nishanth-singh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.linkedinLink}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <FaLinkedin className={styles.linkedinIcon} />
+            <span>LinkedIn</span>
+          </motion.a>
+
+          <motion.a
+            href="mailto:nishanthraj9618@gmail.com"
+            className={styles.emailLink}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.2 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <svg className={styles.emailIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>nishanthraj9618@gmail.com</span>
+          </motion.a>
         </div>
       </div>
     </section>
