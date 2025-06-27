@@ -1,6 +1,5 @@
-import { FC, ReactElement ,useEffect} from 'react';
+import { FC, ReactElement, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import styles from '../styles/Skills.module.css';
 
@@ -20,7 +19,7 @@ const Skills: FC = () => {
   const sectionRef = useIntersectionObserver<HTMLElement>((entry) => {
     entry.target.classList.toggle(styles.sectionVisible, entry.isIntersecting);
   }, { threshold: 0.1 });
-  
+
   useEffect(() => {
     if (window.location.hash === '#skills') {
       const element = document.getElementById('skills');
@@ -28,28 +27,54 @@ const Skills: FC = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+
+    // Create stars dynamically
+    const createStars = () => {
+      const starsContainer = document.createElement('div');
+      starsContainer.className = styles.starsContainer;
+      
+      const stars1 = document.createElement('div');
+      stars1.className = styles.stars;
+      
+      const stars2 = document.createElement('div');
+      stars2.className = styles.stars2;
+      
+      const stars3 = document.createElement('div');
+      stars3.className = styles.stars3;
+      
+      starsContainer.appendChild(stars1);
+      starsContainer.appendChild(stars2);
+      starsContainer.appendChild(stars3);
+      
+      const section = document.querySelector(`.${styles.skillsSection}`);
+      if (section) {
+        section.appendChild(starsContainer);
+      }
+    };
+
+    createStars();
   }, []);
 
   const skillCategories: SkillCategory[] = [
     {
       title: 'Frontend',
-      icon: <i className="fab fa-html5" />,
-      skills: ['HTML & CSS', 'JavaScript', 'Tailwind CSS']
+      icon: <i className="fas fa-star" />,
+      skills: ['JavaScript', 'React.js','Redux']
     },
     {
       title: 'Backend',
-      icon: <i className="fab fa-node-js" />,
-      skills: ['React.js', 'Node.js', 'Express.js']
+      icon: <i className="fas fa-server" />,
+      skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets','Restful APIs']
     },
     {
       title: 'Database',
       icon: <i className="fas fa-database" />,
-      skills: ['MySQL', 'MongoDB']
+      skills: ['MySQL', 'MongoDB', 'Firebase']
     },
     {
-      title: 'Programming Language',
+      title: 'FrameWorks',
       icon: <i className="fas fa-code" />,
-      skills: ['C', 'Java']
+      skills: ['Tailwind CSS', 'Bootstrap', 'Material UI']
     }
   ];
 
@@ -65,13 +90,13 @@ const Skills: FC = () => {
       available: true
     },
     {
-      title: 'Full Stack Web Development',
-      id: 'fullstack-certificate',
+      title: 'DSA Certification',
+      id: 'dsa-certificate',
       available: false
     },
     {
-      title: 'DSA Certification',
-      id: 'dsa-certificate',
+      title: 'Full Stack Web Dev',
+      id: 'fullstack-certificate',
       available: false
     }
   ];
@@ -79,24 +104,34 @@ const Skills: FC = () => {
   return (
     <section id="skills" ref={sectionRef} className={styles.skillsSection}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>Skills</h2>
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.titleGlow}>My Skills</span>
+        </h2>
+        
+        <div className={styles.nebula}></div>
+        <div className={`${styles.nebula} ${styles.nebula2}`}></div>
+        <div className={`${styles.nebula} ${styles.nebula3}`}></div>
         
         <div className={styles.skillsContainer}>
           <div className={styles.skillHeadings}>
-            <h3>Frontend</h3>
-            <h3>Backend</h3>
-            <h3>Database</h3>
-            <h3>Languages</h3>
+            {skillCategories.map((category, index) => (
+              <h3 key={index}>
+                <span className={styles.headingIcon}>{category.icon}</span>
+                {category.title}
+              </h3>
+            ))}
           </div>
 
           <div className={styles.skillsContent}>
             {skillCategories.map((category, index) => (
               <div key={index} className={styles.skillGroup}>
+                <div className={styles.skillGroupGlow}></div>
                 <ul className={styles.skillList}>
                   {category.skills.map((skill, skillIndex) => (
                     <li key={skillIndex} className={styles.skillItem}>
-                      {category.icon}
-                      {skill}
+                      <span className={styles.skillIcon}>{category.icon}</span>
+                      <span className={styles.skillText}>{skill}</span>
+                      <span className={styles.skillPulse}></span>
                     </li>
                   ))}
                 </ul>
@@ -105,19 +140,26 @@ const Skills: FC = () => {
           </div>
 
           <div className={styles.certificatesContainer}>
-            <h3 className={styles.certificationsTitle}>Certifications</h3>
+            <h3 className={styles.certificationsTitle}>
+              <i className="fas fa-award" /> Certifications
+            </h3>
             <div className={styles.certificatesGrid}>
-              {certifications.map((cert, index) => (
-                cert.available ? (
-                  <Link
-                    key={index}
-                    to={`/certificates/${cert.id}`}
-                    className={styles.certificateBox}
-                  >
-                    <i className="fas fa-certificate" />
-                    <p className={styles.certificateText}>{cert.title}</p>
-                    <div className={styles.shiningEffect}></div>
-                  </Link>
+
+             {certifications.map((cert, index) => (
+  cert.available ? (
+    <Link
+      key={index}
+      to={`/certificates/${cert.id}`}
+      className={styles.certificateBox}
+    >
+      <i className="fas fa-certificate" />
+      <p className={styles.certificateText}>{cert.title}</p>
+      <div className={styles.shiningEffect}></div>
+      <div className={styles.certificateHoverGlow}></div>
+      <span className={styles.availableGlowBadge}>Completed</span>
+    </Link>
+
+
                 ) : (
                   <div
                     key={index}
@@ -126,6 +168,9 @@ const Skills: FC = () => {
                     <i className="fas fa-certificate" />
                     <p className={styles.certificateText}>{cert.title} (Soon)</p>
                     <div className={styles.shiningEffect}></div>
+                    <div className={styles.comingSoonOverlay}>
+                      <span>In Progress</span>
+                    </div>
                   </div>
                 )
               ))}
