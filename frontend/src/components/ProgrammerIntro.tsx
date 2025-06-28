@@ -8,21 +8,114 @@ import { loadSlim } from '@tsparticles/slim';
 
 const ProgrammerIntro: FC = () => {
   const navigate = useNavigate();
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const codeRef = useRef<HTMLDivElement>(null);
 
-  // Initialize particles engine
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
-  }, []);
+  // Properly typed container variants
+  const containerVariants: Variants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      transition: { 
+        duration: 0 
+      } 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 1, 
+        ease: [0.34, 1.56, 0.64, 1] 
+      } 
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { 
+        duration: 0.8, 
+        ease: [0.36, 0, 0.66, -0.56] 
+      }
+    }
+  };
+
+  // Title animation variants
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.34, 1.56, 0.64, 1]
+      }
+    }
+  };
+
+  // Text animation variants
+  const textVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0.33, 1, 0.68, 1]
+      }
+    }
+  };
+
+  // Button animation variants
+  const buttonVariants: Variants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        delay: 1.2,
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }
+    },
+    hover: {
+      scale: 1.05,
+      backgroundPosition: '100% 0%',
+      boxShadow: '0 10px 25px rgba(107, 169, 220, 0.5)',
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
+    tap: {
+      scale: 0.98
+    }
+  };
+
+  // Quote animation variants
+  const quoteVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.5,
+        duration: 1,
+        ease: [0.34, 1.56, 0.64, 1]
+      }
+    }
+  };
 
   // Particles configuration
   const particlesOptions = {
     fpsLimit: 120,
     interactivity: {
       events: {
+        onClick: {
+          enable: true,
+          mode: "push",
+        },
         onHover: {
           enable: true,
           mode: "repulse",
@@ -44,7 +137,7 @@ const ProgrammerIntro: FC = () => {
       },
       number: {
         density: { enable: true },
-        value: 100,
+        value: 80,
       },
       opacity: {
         value: { min: 0.3, max: 0.7 },
@@ -56,98 +149,86 @@ const ProgrammerIntro: FC = () => {
     },
     detectRetina: true,
   };
-  // GSAP animations
+
+  // Initialize particles engine
   useEffect(() => {
-    gsap.from(titleRef.current, {
-      duration: 1.5,
-      y: -50,
-      opacity: 0,
-      ease: "power3.out",
-      delay: 0.3
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
     });
 
-    gsap.to(".glow", {
-      duration: 2,
-      opacity: 0.8,
-      yoyo: true,
-      repeat: -1,
-      ease: "sine.inOut"
-    });
+    // Code animation
+    if (codeRef.current) {
+      const lines = codeRef.current.querySelectorAll('.code-line');
+      const keywords = codeRef.current.querySelectorAll('.keyword');
+      
+      gsap.from(lines, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        delay: 1.5
+      });
+
+      keywords.forEach(keyword => {
+        gsap.to(keyword, {
+          duration: 2,
+          color: "#6ba9dc",
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut"
+        });
+      });
+    }
   }, []);
 
-  // Framer Motion variants
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.5
-      }
+  const handleExplore = () => {
+    if (buttonRef.current) {
+      // Animate button breaking apart
+      gsap.to(buttonRef.current, {
+        scale: 1.2,
+        duration: 0.2,
+        onComplete: () => {
+          gsap.to(buttonRef.current, {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.3,
+            onComplete: () => {
+              // Create broken pieces effect
+              const buttonRect = buttonRef.current?.getBoundingClientRect();
+              if (buttonRect) {
+                for (let i = 0; i < 8; i++) {
+                  const piece = document.createElement('div');
+                  piece.className = styles.buttonPiece;
+                  piece.style.left = `${buttonRect.left + buttonRect.width / 2}px`;
+                  piece.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
+                  piece.style.backgroundColor = `hsl(${Math.random() * 60 + 200}, 70%, 60%)`;
+                  document.body.appendChild(piece);
+                  
+                  gsap.to(piece, {
+                    x: (Math.random() - 0.5) * 300,
+                    y: (Math.random() - 0.5) * 300,
+                    rotation: Math.random() * 360,
+                    opacity: 0,
+                    scale: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    onComplete: () => piece.remove()
+                  });
+                }
+              }
+              
+              // Navigate to home page after animation completes
+              setTimeout(() => navigate('/home'), 500);
+            }
+          });
+        }
+      });
     }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { y: 40, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
-  };
-  const buttonVariants: Variants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        delay: 1.5,
-        type: "spring",
-        stiffness: 300,
-        damping: 20
-      }
-    },
-    hover: {
-      scale: 1.05,
-      backgroundPosition: '100% 0%',
-      boxShadow: '0 10px 25px rgba(107, 169, 220, 0.5)',
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut"
-      }
-    },
-    tap: {
-      scale: 0.98
-    }
-  };
-
-  const handleNavigateHome = () => {
-    gsap.to(buttonRef.current, {
-      duration: 0.5,
-      scale: 0.9,
-      y: 5,
-      ease: "power2.inOut",
-      onComplete: () => {
-        gsap.to(".content-container", {
-          duration: 0.8,
-          opacity: 0,
-          y: 50,
-          ease: "power3.in",
-          onComplete: () => {
-            navigate('/home');
-            return undefined; // Explicitly return undefined to satisfy TypeScript
-          }
-        });
-      }
-    });
   };
 
   return (
     <div className={styles.container}>
-      {/* Updated Particles component */}
       <Particles
         id="tsparticles"
         options={particlesOptions}
@@ -159,78 +240,92 @@ const ProgrammerIntro: FC = () => {
       <div className={`${styles.glow} ${styles.glow3}`}></div>
 
       <motion.div 
-        className={`${styles.content} content-container`}
-        variants={containerVariants}
+        ref={containerRef}
+        className={styles.content}
         initial="hidden"
         animate="visible"
+        exit="exit"
+        variants={containerVariants}
       >
+        {/* Main title with animation */}
+        <motion.h1 
+          className={styles.mainTitle}
+          variants={titleVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          Welcome Geeks
+        </motion.h1>
 
-        
-        <motion.div className={styles.section} variants={itemVariants}>
-          <h2 className={styles.subtitle}>
-            <span className={styles.underline}>My Journey</span>
-          </h2>
-          <motion.p 
-            className={styles.text}
-            whileHover={{ x: 10, transition: { duration: 0.3 } }}
-          >
-            From writing my first "Hello World" to building complex applications, 
-            programming has been my passion. I love how it combines creativity 
-            with problem-solving to create solutions that impact people's lives.
-          </motion.p>
+        {/* Main introduction text */}
+        <motion.div 
+          className={styles.introText}
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <p>
+            I'm <span className={styles.highlight}>Nishant</span>, a programmer with a strong interest in building real-world solutions through code. 
+            I enjoy problem-solving and love turning ideas into impactful, functional projects. 
+            I'm always eager to <span className={styles.lightRed}>learn</span>, <span className={styles.lightRed}>build</span>, and <span className={styles.lightRed}>grow</span>.
+          </p>
         </motion.div>
 
-        <motion.div className={styles.section} variants={itemVariants}>
-          <h2 className={styles.subtitle}>
-            <span className={styles.underline}>What Drives Me</span>
-          </h2>
-          <motion.p 
-            className={styles.text}
-            whileHover={{ x: 10, transition: { duration: 0.3 } }}
-          >
-            The thrill of turning ideas into reality keeps me coding. Whether it's 
-            optimizing algorithms or crafting beautiful UIs, I enjoy every aspect 
-            of the development process.
-          </motion.p>
+        {/* Advanced Java Code Snippet */}
+        <motion.div 
+          className={styles.interactiveElement}
+          whileHover={{ y: -5 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <div className={styles.codeSnippet} ref={codeRef}>
+            <pre className={styles.javaCode}>
+              <code>
+                <span className={styles.codeLine}><span className={styles.keyword}>public class</span> <span className={styles.className}>Motivation</span> {'{'}</span>
+                <span className={styles.codeLine}>    <span className={styles.keyword}>public static void</span> <span className={styles.methodName}>main</span>(String[] args) {'{'}</span>
+                <span className={styles.codeLine}>        <span className={styles.comment}>// My Path</span></span>
+                <span className={styles.codeLine}>        <span className={styles.keyword}>while</span>(<span className={styles.boolean}>true</span>) {'{'}</span>
+                <span className={styles.codeLine}>            System.<span className={styles.methodName}>out</span>.println(<span className={styles.string}>"Stay persistent"</span>);</span>
+                <span className={styles.codeLine}>            System.<span className={styles.methodName}>out</span>.println(<span className={styles.string}>"Solve your bugs"</span>);</span>
+                <span className={styles.codeLine}>            System.<span className={styles.methodName}>out</span>.println(<span className={styles.string}>"Always believe in yourself"</span>);</span>
+                <span className={styles.codeLine}>            Thread.<span className={styles.methodName}>sleep</span>(1000); <span className={styles.comment}>// Keep going!</span></span>
+                <span className={styles.codeLine}>        {'}'}</span>
+                <span className={styles.codeLine}>    {'}'}</span>
+                <span className={styles.codeLine}>{'}'}</span>
+              </code>
+            </pre>
+          </div>
         </motion.div>
 
-        <motion.div className={styles.section} variants={itemVariants}>
-          <h2 className={styles.subtitle}>
-            <span className={styles.underline}>My Goals</span>
-          </h2>
-          <motion.ul className={styles.goalsList}>
-            {[
-              "Build scalable, maintainable software",
-              "Contribute to open source projects",
-              "Master new technologies continuously",
-              "Solve real-world problems through code"
-            ].map((goal, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 + index * 0.15 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  color: "#6ba9dc",
-                  transition: { duration: 0.2 }
-                }}
-              >
-                <span className={styles.bullet}>▹</span> {goal}
-              </motion.li>
-            ))}
-          </motion.ul>
+        {/* Inspirational quote */}
+        <motion.div 
+          className={styles.quote}
+          variants={quoteVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover={{
+            y: [0, -5, 0, 5, 0],
+            transition: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
+        >
+          <p>"The future belongs to those who believe in the beauty of their dreams"</p>
         </motion.div>
 
+        {/* Explore button */}
         <motion.button
           ref={buttonRef}
-          onClick={handleNavigateHome}
-          className={styles.enterButton}
+          onClick={handleExplore}
+          className={styles.exploreButton}
           variants={buttonVariants}
+          initial="hidden"
+          animate="visible"
           whileHover="hover"
           whileTap="tap"
         >
-          <span className={styles.buttonText}>Enter My Portfolio</span>
+          <span className={styles.buttonText}>Let's Explore</span>
           <span className={styles.buttonArrow}>→</span>
         </motion.button>
       </motion.div>

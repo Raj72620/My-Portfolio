@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa';
 import styles from '../styles/Home.module.css';
-import photo1 from '../assets/coder.jpg';
+import photo1 from '../assets/hackathon2.jpg';
 import photo2 from '../assets/hackathon2.jpg';
-import photo3 from '../assets/coder.jpg';
+import photo3 from '../assets/hackathon2.jpg';
 import photo4 from '../assets/hackathon2.jpg';
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
     
     const interval = setInterval(() => {
       setCurrentPhotoIndex((prev) => (prev + 1) % photos.length);
-    }, 3000);
+    }, 5000);
     
     return () => clearInterval(interval);
   }, [showHello, photos.length]);

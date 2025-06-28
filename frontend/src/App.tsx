@@ -30,14 +30,14 @@ function AppContent() {
   return (
     <>
       {!hideNav && <Navigation />}
-      <Routes>
-        {/* Programmer Intro as landing page */}
-        <Route path="/" element={<ProgrammerIntro />} />
-        
-        {/* Main portfolio page with all sections */}
-        <Route path="/home" element={
-          <div className="app-container">
-            <AnimatePresence>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          {/* Programmer Intro as landing page */}
+          <Route path="/" element={<ProgrammerIntro />} />
+          
+          {/* Main portfolio page with all sections */}
+          <Route path="/home" element={
+            <div className="app-container">
               <main>
                 <Home />
                 <About />
@@ -45,18 +45,18 @@ function AppContent() {
                 <Projects />
                 <Collaborate />
               </main>
-            </AnimatePresence>
-            <Footer />
-          </div>
-        }/>
-        
-        {/* Programmer intro accessible via nav */}
-        <Route path="/programmer" element={<ProgrammerIntro />} />
-        
-        {/* Other routes */}
-        <Route path="/certificates/:certId" element={<CertificateViewer />} />
-        <Route path="/projects/:projectId" element={<ProjectDetails />} />
-      </Routes>
+              <Footer />
+            </div>
+          }/>
+          
+          {/* Programmer intro accessible via nav */}
+          <Route path="/programmer" element={<ProgrammerIntro />} />
+          
+          {/* Other routes */}
+          <Route path="/certificates/:certId" element={<CertificateViewer />} />
+          <Route path="/projects/:projectId" element={<ProjectDetails />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }
