@@ -34,24 +34,38 @@
   margin-bottom: 1.5rem;
 }
 
+/* Modern robotic font */
 .nameTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-  background: linear-gradient(90deg, #ffffff 0%, #8ab4d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
+/* Simple laser line effect */
+.laserLine {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #00fffc, transparent);
+  margin: 1.5rem 0;
+  animation: laserPulse 3s ease-in-out infinite;
+}
+
+@keyframes laserPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Profession text */
 .profession {
-  font-size: 1.3rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
   color: #8ab4d4;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .infoCard {
@@ -389,24 +403,68 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+
 .resumeButton {
-  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: not-allowed;
+  background: rgba(255, 50, 50, 0.15);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  box-shadow: 0 0 15px rgba(255, 50, 50, 0.3);
+  overflow: hidden;
 }
 
-.githubButton:hover {
-  background: linear-gradient(135deg, #000 0%, #333 100%);
-  transform: translateY(-3px);
+.resumeButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 50, 50, 0.4),
+    transparent
+  );
+  transition: 0.5s;
 }
 
 .resumeButton:hover {
-  background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
-  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 50, 50, 0.5), 0 0 40px rgba(255, 50, 50, 0.3);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.buttonIcon {
-  font-size: 1.2rem;
+.resumeButton:hover::before {
+  left: 100%;
+}
+
+.lockBadge {
+  margin-left: 8px;
+  font-size: 0.9rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
 
 /* Responsive adjustments */

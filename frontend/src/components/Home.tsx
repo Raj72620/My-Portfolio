@@ -25,7 +25,7 @@ const Home = () => {
     
     const interval = setInterval(() => {
       setCurrentPhotoIndex((prev) => (prev + 1) % photos.length);
-    }, 5000);
+    }, 3000);
     
     return () => clearInterval(interval);
   }, [showHello, photos.length]);
@@ -81,16 +81,19 @@ const buttonVariants = {
     <section className={styles.hero} id="home">
       <div className={styles.container}>
         {/* Enhanced Left Section */}
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Wallpoet&display=swap" rel="stylesheet"></link>
+
         <div className={styles.leftSection}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className={styles.introHeader}
-          >
-            <h1 className={styles.nameTitle}>Nishanth Raj</h1>
-            <p className={styles.profession}>Tech Enthusiast</p>
-          </motion.div>
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2 }}
+  className={styles.introHeader}
+>
+  <h1 className={styles.nameTitle}>Nishanth Raj</h1>
+  <div className={styles.laserLine}></div>
+  <p className={styles.profession}>Tech Enthusiast</p>
+</motion.div>
 
           <div className={styles.infoCard}>
             {[
@@ -133,20 +136,19 @@ const buttonVariants = {
               <span>GitHub</span>
             </motion.a>
 
-            <motion.a
-              href="/path-to-your-resume.pdf" // Replace with your resume URL
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.resumeButton}
-              variants={buttonVariants}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              whileHover="hover"
-            >
-              <FaFilePdf className={styles.buttonIcon} />
-              <span>Resume</span>
-            </motion.a>
+       <motion.button
+  className={styles.resumeButton}
+  variants={buttonVariants}
+  initial="hidden"
+  animate="visible"
+  custom={1}
+  whileHover="hover"
+  disabled
+>
+  <FaFilePdf className={styles.buttonIcon} />
+  <span>Resume </span>
+  <span className={styles.lockBadge}>🔒</span>
+</motion.button>
           </div>
         </div>
 
