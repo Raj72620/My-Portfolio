@@ -16,7 +16,7 @@ const Navigation: FC = () => {
   
   const links: NavLink[] = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Me' },
+    { id: 'about', label: 'Academics' },
     { id: 'skills', label: 'My Skills' },
     { id: 'projects', label: 'My Projects' },
     { id: 'collaborate', label: 'Collaborate' }

@@ -122,7 +122,7 @@ const buttonVariants = {
           {/* Action Buttons Section */}
           <div className={styles.actionButtons}>
             <motion.a
-              href="https://github.com/yourusername" // Replace with your GitHub URL
+              href='https://github.com/Raj72620' // Replace with your GitHub URL
               target="_blank"
               rel="noopener noreferrer"
               className={styles.githubButton}
