@@ -1,7 +1,7 @@
 /* ===== Base Styles ===== */
 .aboutSection {
   position: relative;
-   opacity: 0;
+  opacity: 0;
   animation: fadeIn 0.5s ease-out forwards;
   width: 100%;
   min-height: 100vh;
@@ -11,6 +11,7 @@
   overflow: hidden;
   background: radial-gradient(ellipse at center, #0a0a16 0%, #000000 100%);
 }
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -18,69 +19,129 @@
 }
 
 /* ===== Education Background ===== */
- .educationBackground {
+.educationBackground {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover,
-    linear-gradient(135deg, #0a0a2a, #1a1a3a);
-  background-blend-mode: overlay;
+  background: var(--books-image) center/cover;
   opacity: 0.15;
   z-index: 0;
   filter: grayscale(50%) contrast(120%);
 }
 
+/* ===== Container Layout ===== */
+.mainContainer {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
+  z-index: 3;
+  transition: all 0.5s ease;
+}
+
+.sideContainer {
+  position: absolute;
+  width: 400px;
+  max-width: 40%;
+  padding: 1.5rem;
+  z-index: 2;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  filter: blur(2px);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.sideContainer:hover {
+  filter: blur(1px);
+  opacity: 0.9;
+}
+
+.leftContainer {
+  left: 5%;
+  transform: translateX(-60%) scale(0.9);
+}
+
+.rightContainer {
+  right: 5%;
+  transform: translateX(60%) scale(0.9);
+}
+
+.sideContainer.active {
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+  opacity: 1;
+  z-index: 4;
+}
+
+/* When side container is active, push main container slightly */
+.leftContainer.active ~ .mainContainer {
+  transform: translateX(30%);
+}
+
+.rightContainer.active ~ .mainContainer {
+  transform: translateX(-30%);
+}
+
+/* When middle container is active, push side containers */
+.mainContainer.active ~ .leftContainer {
+  transform: translateX(-80%) scale(0.9);
+}
+
+.mainContainer.active ~ .rightContainer {
+  transform: translateX(80%) scale(0.9);
+}
+
 /* ===== Floating Icons ===== */
 .floatingIcon {
   position: absolute;
+  left: var(--pos-x);
+  top: var(--pos-y);
+  width: var(--size);
+  height: var(--size);
+  font-size: var(--size);
+  animation: floatIcon linear infinite;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
   pointer-events: none;
   user-select: none;
   opacity: 0.3;
-  animation: floatIcon linear infinite;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes floatIcon {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
     opacity: 0.2;
   }
   50% {
-    transform: translateY(-50px) rotate(180deg);
+    transform: translate(-50%, calc(-50% - 50px)) rotate(180deg);
     opacity: 0.4;
   }
   100% {
-    transform: translateY(0) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
     opacity: 0.2;
   }
 }
 
-/* ===== B-Tech Container Wrapper ===== */
-.btechContainerWrapper {
-  position: relative;
-  width: 100%;
-  max-width: 500px; /* Reduced from 600px */
-  padding: 1.5rem; /* Reduced from 2rem */
-  z-index: 2;
-  visibility: hidden;
-}
-
+/* ===== B-Tech Container Styles ===== */
 .btechContainer {
   position: relative;
   width: 100%;
-  padding: 2.5rem 1.5rem; /* Reduced padding */
+  padding: 2.5rem 1.5rem;
   background: rgba(10, 12, 28, 0.7);
-  border-radius: 18px; /* Slightly smaller radius */
-  backdrop-filter: blur(8px); /* Reduced blur */
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
   box-shadow: 
     0 0 0 1px rgba(107, 169, 220, 0.1),
-    0 0 30px rgba(0, 0, 0, 0.4), /* Reduced shadow */
-    0 0 80px rgba(107, 169, 220, 0.08); /* Reduced glow */
+    0 0 30px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(107, 169, 220, 0.08);
   text-align: center;
-  visibility: hidden;
   overflow: hidden;
 }
 
@@ -105,6 +166,7 @@
 .mounted .btechContainer {
   visibility: visible;
 }
+
 /* ===== Logo Circle ===== */
 .logoCircle {
   width: 120px;
@@ -280,7 +342,7 @@
   100% { transform: translateX(100%); }
 }
 
-/* ===== Modal Styles (unchanged from previous) ===== */
+/* ===== Modal Styles ===== */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -298,16 +360,15 @@
 .modalBackground {
   position: relative;
   width: 90%;
-  max-width: 900px;
-  max-height: 90vh;
+  max-width: 800px;
+  max-height: 80vh;
   overflow-y: auto;
-  background: 
-    url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover,
-    linear-gradient(135deg, #0a0a2a, #1a1a3a);
-  background-blend-mode: overlay;
+  background: linear-gradient(135deg, #0a0a2a, #1a1a3a);
   border-radius: 20px;
   box-shadow: 0 0 40px rgba(107, 169, 220, 0.5);
   animation: modalEntrance 0.5s ease-out;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes modalEntrance {
@@ -316,7 +377,7 @@
 }
 
 .modalContent {
-  padding: 2.5rem;
+  padding: 2rem;
   position: relative;
 }
 
@@ -360,15 +421,15 @@
 
 .semesterGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 .semesterCard {
   background: rgba(20, 22, 40, 0.8);
   border-radius: 15px;
-  padding: 1.5rem;
+  padding: 1.2rem;
   border: 1px solid rgba(107, 169, 220, 0.3);
   transition: all 0.3s ease;
   position: relative;
@@ -469,28 +530,78 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Scrollbar styles */
+.modalBackground::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalBackground::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.modalBackground::-webkit-scrollbar-thumb {
+  background: rgba(107, 169, 220, 0.5);
+  border-radius: 10px;
+}
+
+.modalBackground::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 169, 220, 0.7);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .btechContainerWrapper {
-    padding: 1rem;
+  .mainContainer {
+    max-width: 90%;
+  }
+  
+  .sideContainer {
+    max-width: 70%;
+  }
+  
+  .leftContainer {
+    left: 0;
+    transform: translateX(-70%) scale(0.8);
+  }
+  
+  .rightContainer {
+    right: 0;
+    transform: translateX(70%) scale(0.8);
+  }
+  
+  .leftContainer.active ~ .mainContainer {
+    transform: translateX(40%);
+  }
+  
+  .rightContainer.active ~ .mainContainer {
+    transform: translateX(-40%);
+  }
+  
+  .mainContainer.active ~ .leftContainer {
+    transform: translateX(-90%) scale(0.8);
+  }
+  
+  .mainContainer.active ~ .rightContainer {
+    transform: translateX(90%) scale(0.8);
   }
   
   .btechContainer {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
   }
   
   .logoCircle {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
   
   .infoStack {
     margin: 1.5rem 0;
+    gap: 1rem;
   }
   
   .performanceButton {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
   }
   
   .modalContent {

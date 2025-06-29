@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import styles from '../styles/About.module.css';
+import booksImage from '../assets/books.jpg';
 
 interface SemesterData {
   year: string;
@@ -9,6 +10,7 @@ interface SemesterData {
 }
 
 const PerformanceModal: FC<{ onClose: () => void }> = ({ onClose }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
   const semesterData: SemesterData[] = [
     { year: '2023', sgpa: '8.00', credits: '19.50/19.50', status: 'completed' },
     { year: '2023-24', sgpa: '8.23', credits: '19.50/19.50', status: 'completed' },
@@ -19,9 +21,22 @@ const PerformanceModal: FC<{ onClose: () => void }> = ({ onClose }) => {
     { year: '2026', sgpa: '-', credits: '-', status: 'pending' },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modalBackground}>
+      <div className={styles.modalBackground} ref={modalRef}>
         <div className={styles.modalContent}>
           <button className={styles.closeButton} onClick={onClose}>
             &times;
