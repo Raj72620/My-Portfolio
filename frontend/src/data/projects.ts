@@ -1,6 +1,8 @@
 import { Project } from '../types/projects';
 import registrationFormImg from '../assets/registration-form.jpg';
 import videConferenceImg from '../assets/video-conference.jpeg';
+import DiscussionsImg from '../assets/Discussion-Image.jpeg';
+import codingImg from '../assets/coding-image.png';
 
 export const projects: Project[] = [
   {
@@ -11,29 +13,29 @@ export const projects: Project[] = [
     description: "Real-time video conferencing app with WebRTC and Socket.IO",
     github: "#",
     live: "#",
-    type: "Animation",
-    locked: true // Add this flag
+    type: "Web Application",
+    locked: true 
   },
   {
     id: "blessed-startups",
-    title: "Blessed: Startups",
+    title: "Startups",
     tech: ["React", "Node.js"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    description: "Showcase platform for emerging startups with subscription model",
+    description: "Showcase platform for emerging startups with model",
     github: "#",
     live: "#",
     type: "Web App",
     locked: true
   },
   {
-    id: "hot-days",
-    title: "Hot Days Ahead",
-    tech: ["Three.js", "GLSL"],
-    image: "https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    description: "Interactive weather visualization with 3D effects",
+    id: "Coding Platform",
+    title: "Coding Platform",
+    tech: ["Node", "Express", "React", "MongoDB","Docker"],
+    image: codingImg,
+    description: "",
     github: "#",
     live: "#",
-    type: "Visualization",
+    type: "Web Application",
     locked: true
   },
   {
@@ -48,14 +50,14 @@ export const projects: Project[] = [
     locked: false // Only this project is unlocked
   },
   {
-    id: "strawberries",
-    title: "Strawberries",
-    tech: ["Blender", "WebGL"],
-    image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    description: "3D fruit modeling with realistic textures and lighting",
+    id: "Discussions",
+    title: "Discussion Platfrom",
+    tech: ["React", "Express", "MongoDB", "Socket.IO"],
+    image: DiscussionsImg,
+    description: "A discussion page where users can post and discuss topics",
     github: "#",
     live: "#",
-    type: "3D Model",
+    type: "Web Application",
     locked: true
   },
 ];
