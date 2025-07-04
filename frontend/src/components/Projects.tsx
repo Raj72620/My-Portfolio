@@ -59,17 +59,16 @@ const Projects = () => {
       live: "#",
       type: "Visualization",
     },
-    {
-      id: "graf",
-      title: "GRAF",
-      tech: ["React", "WebGL"],
-      image:
-        "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      description: "Generative art framework for creative coding",
-      github: "#",
-      live: "#",
-      type: "Framework",
-    },
+   {
+  id: "registration-form",
+  title: "Registration Form",
+  tech: ["HTML", "CSS", "JavaScript"],
+  image: "/src/assets/registration-form.jpg",
+  description: "A responsive registration form with validation",
+  github: "https://github.com/Raj72620/Registration-Form",
+  live: "https://registration-forrmm.netlify.app/",
+  type: "Web Application",
+},
     {
       id: "strawberries",
       title: "Strawberries",
