@@ -10,7 +10,10 @@ const Projects = () => {
   const navigate = useNavigate();
   const sectionRef = useIntersectionObserver(
     (entry) => {
-      entry.target.classList.toggle(styles.sectionVisible, entry.isIntersecting);
+      entry.target.classList.toggle(
+        styles.sectionVisible,
+        entry.isIntersecting
+      );
     },
     { threshold: 0.1 }
   );
@@ -112,17 +115,18 @@ const Projects = () => {
         <div className={styles.projectsContainer} ref={containerRef}>
           <AnimatePresence>
             {getVisibleProjects().map((project, index) => {
-              const position = index - 2; 
+              const position = index - 2;
               const zIndex = 5 - Math.abs(position);
-              const scale = 1 - Math.abs(position) * 0.08; 
-              const opacity = position === 0 ? 1 : 0.8 - Math.abs(position) * 0.15; 
+              const scale = 1 - Math.abs(position) * 0.08;
+              const opacity =
+                position === 0 ? 1 : 0.8 - Math.abs(position) * 0.15;
               const xOffset = position * 70;
               const blur = Math.abs(position) * 4.2;
 
               return (
                 <motion.div
                   key={`${project.id}-${index}`}
-                  className={`${styles.projectCard} ${project.locked ? styles.locked : ''}`}
+                  className={styles.projectCard}
                   style={{
                     zIndex,
                     transformOrigin: "center center",
@@ -152,18 +156,19 @@ const Projects = () => {
                     mass: 0.8,
                   }}
                   onClick={() => {
-                    if (position === 0 && !project.locked) {
+                    if (position === 0) {
                       navigate(`/projects/${project.id}`);
-                    } else if (!project.locked) {
+                    } else {
                       setActiveIndex(
-                        (activeIndex + position + projects.length) % projects.length
+                        (activeIndex + position + projects.length) %
+                          projects.length
                       );
                       setIsAnimating(true);
                       setTimeout(() => setIsAnimating(false), 1000);
                     }
                   }}
                   whileHover={{
-                    scale: position === 0 && !project.locked ? 1.05 : scale + 0.05,
+                    scale: position === 0 ? 1.05 : scale + 0.05,
                   }}
                 >
                   <div className={styles.imageContainer}>
@@ -185,7 +190,7 @@ const Projects = () => {
                       ))}
                     </div>
                   </div>
-                  {position === 0 && !project.locked && (
+                  {position === 0 && (
                     <div className={styles.activeIndicator}></div>
                   )}
                 </motion.div>
@@ -246,17 +251,20 @@ const Projects = () => {
                 >
                   &times;
                 </button>
-
                 <div className={styles.modalTitleContainer}>
                   <h3>All Projects</h3>
                   <div className={styles.modalUnderline}></div>
                 </div>
-
+           
                 <div className={styles.projectsGrid}>
                   {projects.map((project, index) => (
                     <motion.div
                       key={project.id}
-                      className={`${styles.gridProjectCard} ${project.locked ? styles.locked : ''}`}
+                      className={styles.gridProjectCard}
+                      style={{
+                        position: "relative",
+                        filter: project.locked ? "brightness(0.5)" : "none",
+                      }}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
@@ -277,7 +285,16 @@ const Projects = () => {
                         <div className={styles.gridTechBadge}>
                           {project.type}
                         </div>
+
+                        {project.locked && (
+                          <div className={styles.comingSoonOverlay}>
+                            <div className={styles.comingSoonText}>
+                              COMING SOON
+                            </div>
+                          </div>
+                        )}
                       </div>
+
                       <div className={styles.gridProjectContent}>
                         <h4>{project.title}</h4>
                         <p>{project.description}</p>
@@ -287,6 +304,10 @@ const Projects = () => {
                           ))}
                         </div>
                       </div>
+
+                      {project.locked && (
+                        <div className={styles.lockedOverlay}></div>
+                      )}
                     </motion.div>
                   ))}
                 </div>

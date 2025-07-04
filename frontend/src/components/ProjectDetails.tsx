@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../styles/ProjectDetails.module.css';
-import { projects } from '../data/projects'; // We'll create this next
+import { projects } from '../data/projects';
 
 const ProjectDetails = () => {
   const navigate = useNavigate();
   const { projectId } = useParams<{ projectId: string }>();
 
-  // Find the project from your projects data
   const project = projects.find(p => p.id === projectId);
 
   useEffect(() => {
@@ -19,15 +18,12 @@ const ProjectDetails = () => {
 
   if (!project || project.locked) {
     return (
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.load}`}>
         <button className={styles.backButton} onClick={() => navigate(-1)}>
           &larr; Back to Projects
         </button>
         <h1 className={styles.title}>Project Coming Soon</h1>
-        <div className={styles.comingSoonContainer}>
-          <p>This project is currently under development.</p>
-          <p>Check back later for updates!</p>
-        </div>
+        <p className={styles.description}>This project is currently under development.</p>
       </div>
     );
   }
