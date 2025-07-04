@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../styles/CertificateViewer.module.css';
 import uiUxCertificate from '../assets/Ui-Ux certificate.jpg';
 import mongodbCertificate from '../assets/Mongodb-Certificate.jpg';
+import fullStackCertificate from '../assets/fullstack-certificate.jpg';
 
 const CertificateViewer = () => {
   const { certId } = useParams<{ certId: string }>();
@@ -17,6 +18,10 @@ const CertificateViewer = () => {
     'mongodb-certificate': {
       image: mongodbCertificate,
       title: 'MongoDB Certification',
+    },
+    'fullstack-certificate': {
+      image: fullStackCertificate,
+      title: 'Full Stack Web Development Certification',
     },
   };
 
