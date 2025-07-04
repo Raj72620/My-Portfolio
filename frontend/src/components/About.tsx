@@ -1,7 +1,6 @@
 import { FC, useRef, useEffect, useState } from 'react';
 import styles from '../styles/About.module.css';
 import svcetLogo from '../assets/svcet.jpg';
-import booksImage from '../assets/books.jpg';
 import PerformanceModal from './PerformanceModal';
 
 const About: FC = () => {
@@ -103,7 +102,7 @@ const About: FC = () => {
             </div>
 
             <div className={styles.infoItem}>
-              <h3>Grand Grade</h3>
+              <h3>Final Grade</h3>
               <p>99.9</p>
             </div>
           </div>

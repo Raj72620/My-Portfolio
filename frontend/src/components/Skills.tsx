@@ -89,14 +89,14 @@ const Skills: FC = () => {
       id: 'mongodb-certificate',
       available: true
     },
+      {
+      title: 'Full Stack Web Dev',
+      id: 'fullstack-certificate',
+      available: true
+    },
     {
       title: 'DSA Certification',
       id: 'dsa-certificate',
-      available: false
-    },
-    {
-      title: 'Full Stack Web Dev',
-      id: 'fullstack-certificate',
       available: false
     }
   ];
