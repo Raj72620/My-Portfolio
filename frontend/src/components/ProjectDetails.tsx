@@ -17,13 +17,17 @@ const ProjectDetails = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!project) {
+  if (!project || project.locked) {
     return (
       <div className={styles.container}>
         <button className={styles.backButton} onClick={() => navigate(-1)}>
           &larr; Back to Projects
         </button>
-        <h1 className={styles.title}>Project not found</h1>
+        <h1 className={styles.title}>Project Coming Soon</h1>
+        <div className={styles.comingSoonContainer}>
+          <p>This project is currently under development.</p>
+          <p>Check back later for updates!</p>
+        </div>
       </div>
     );
   }

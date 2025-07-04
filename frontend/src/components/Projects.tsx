@@ -10,10 +10,7 @@ const Projects = () => {
   const navigate = useNavigate();
   const sectionRef = useIntersectionObserver(
     (entry) => {
-      entry.target.classList.toggle(
-        styles.sectionVisible,
-        entry.isIntersecting
-      );
+      entry.target.classList.toggle(styles.sectionVisible, entry.isIntersecting);
     },
     { threshold: 0.1 }
   );
@@ -118,15 +115,14 @@ const Projects = () => {
               const position = index - 2; 
               const zIndex = 5 - Math.abs(position);
               const scale = 1 - Math.abs(position) * 0.08; 
-              const opacity =
-                position === 0 ? 1 : 0.8 - Math.abs(position) * 0.15; 
+              const opacity = position === 0 ? 1 : 0.8 - Math.abs(position) * 0.15; 
               const xOffset = position * 70;
               const blur = Math.abs(position) * 4.2;
 
               return (
                 <motion.div
                   key={`${project.id}-${index}`}
-                  className={styles.projectCard}
+                  className={`${styles.projectCard} ${project.locked ? styles.locked : ''}`}
                   style={{
                     zIndex,
                     transformOrigin: "center center",
@@ -156,19 +152,18 @@ const Projects = () => {
                     mass: 0.8,
                   }}
                   onClick={() => {
-                    if (position === 0) {
+                    if (position === 0 && !project.locked) {
                       navigate(`/projects/${project.id}`);
-                    } else {
+                    } else if (!project.locked) {
                       setActiveIndex(
-                        (activeIndex + position + projects.length) %
-                          projects.length
+                        (activeIndex + position + projects.length) % projects.length
                       );
                       setIsAnimating(true);
                       setTimeout(() => setIsAnimating(false), 1000);
                     }
                   }}
                   whileHover={{
-                    scale: position === 0 ? 1.05 : scale + 0.05,
+                    scale: position === 0 && !project.locked ? 1.05 : scale + 0.05,
                   }}
                 >
                   <div className={styles.imageContainer}>
@@ -190,7 +185,7 @@ const Projects = () => {
                       ))}
                     </div>
                   </div>
-                  {position === 0 && (
+                  {position === 0 && !project.locked && (
                     <div className={styles.activeIndicator}></div>
                   )}
                 </motion.div>
@@ -261,14 +256,16 @@ const Projects = () => {
                   {projects.map((project, index) => (
                     <motion.div
                       key={project.id}
-                      className={styles.gridProjectCard}
+                      className={`${styles.gridProjectCard} ${project.locked ? styles.locked : ''}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
-                      whileHover={{ y: -5 }}
+                      whileHover={{ y: project.locked ? 0 : -5 }}
                       onClick={() => {
-                        navigate(`/projects/${project.id}`);
-                        setShowAllProjects(false);
+                        if (!project.locked) {
+                          navigate(`/projects/${project.id}`);
+                          setShowAllProjects(false);
+                        }
                       }}
                     >
                       <div className={styles.gridImageContainer}>

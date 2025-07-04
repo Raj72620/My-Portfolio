@@ -1,17 +1,18 @@
-// src/data/projects.ts
 import { Project } from '../types/projects';
 import registrationFormImg from '../assets/registration-form.jpg';
+import videConferenceImg from '../assets/video-conference.jpeg';
 
 export const projects: Project[] = [
   {
-    id: "palm-trees",
-    title: "Palm Trees",
-    tech: ["CSS", "GSAP"],
-    image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    description: "Tropical palm tree animation with transitions and realistic sway effects",
+    id: "video-conference",
+    title: "Video Conference",
+    tech: ["Node","Express","React","Sockets","WebRTC"],
+    image: videConferenceImg,
+    description: "Real-time video conferencing app with WebRTC and Socket.IO",
     github: "#",
     live: "#",
     type: "Animation",
+    locked: true // Add this flag
   },
   {
     id: "blessed-startups",
@@ -22,6 +23,7 @@ export const projects: Project[] = [
     github: "#",
     live: "#",
     type: "Web App",
+    locked: true
   },
   {
     id: "hot-days",
@@ -32,6 +34,7 @@ export const projects: Project[] = [
     github: "#",
     live: "#",
     type: "Visualization",
+    locked: true
   },
   {
     id: "registration-form",
@@ -42,6 +45,7 @@ export const projects: Project[] = [
     github: "https://github.com/Raj72620/Registration-Form",
     live: "https://registration-forrmm.netlify.app/",
     type: "Web Application",
+    locked: false // Only this project is unlocked
   },
   {
     id: "strawberries",
@@ -52,5 +56,6 @@ export const projects: Project[] = [
     github: "#",
     live: "#",
     type: "3D Model",
+    locked: true
   },
 ];

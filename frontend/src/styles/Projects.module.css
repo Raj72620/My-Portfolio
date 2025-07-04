@@ -411,6 +411,73 @@
   border: 1px solid rgba(107, 169, 220, 0.25);
 }
 
+
+
+/* Add these styles to your Projects.module.css */
+
+/* Locked Project Styles */
+.projectCard.locked {
+  position: relative;
+  filter: grayscale(80%) brightness(0.6);
+  pointer-events: none;
+}
+
+.projectCard.locked::after {
+  content: 'Coming Soon';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: rgba(255, 50, 50, 0.7);
+  padding: 8px 20px;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
+}
+
+.projectCard.locked::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.1);
+  z-index: 5;
+  backdrop-filter: blur(2px);
+}
+
+/* Locked project in grid view */
+.gridProjectCard.locked {
+  filter: grayscale(80%) brightness(0.6);
+  position: relative;
+}
+
+.gridProjectCard.locked::after {
+  content: 'Coming Soon';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(255, 50, 50, 0.7);
+  padding: 6px 15px;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(255, 50, 50, 0.5);
+}
+
 /* ===== Animations ===== */
 @keyframes pulse {
   0% { opacity: 0.5; }

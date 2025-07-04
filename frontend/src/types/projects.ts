@@ -8,4 +8,5 @@ export interface Project {
     live: string;
     description: string;
     type: string;
+    locked: boolean; // Flag to indicate if the project is locked
   }
