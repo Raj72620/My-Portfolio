@@ -1,5 +1,6 @@
 // src/data/projects.ts
 import { Project } from '../types/projects';
+import registrationFormImg from '../assets/registration-form.jpg';
 
 export const projects: Project[] = [
   {
@@ -36,7 +37,7 @@ export const projects: Project[] = [
     id: "registration-form",
     title: "Registration Form",
     tech: ["HTML", "CSS", "JavaScript"],
-    image: "/src/assets/registration-form.jpg",
+    image: registrationFormImg,
     description: "A responsive registration form with validation",
     github: "https://github.com/Raj72620/Registration-Form",
     live: "https://registration-forrmm.netlify.app/",

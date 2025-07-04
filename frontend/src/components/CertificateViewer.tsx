@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../styles/CertificateViewer.module.css';
-import uiUxCertificate from '../assets/Ui-Ux certificate.jpg';
-import mongodbCertificate from '../assets/Mongodb-Certificate.jpg';
-import fullStackCertificate from '../assets/fullstack-certificate.jpg';
+
+const uiUxCertificate = new URL('../assets/Ui-Ux certificate.jpg', import.meta.url).href;
+const mongodbCertificate = new URL('../assets/Mongodb-Certificate.jpg', import.meta.url).href;
+const fullStackCertificate = new URL('../assets/full-stack-web-dev.jpg', import.meta.url).href;
 
 const CertificateViewer = () => {
   const { certId } = useParams<{ certId: string }>();
