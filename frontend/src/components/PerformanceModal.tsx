@@ -1,6 +1,5 @@
 import { FC, useRef, useEffect } from 'react';
 import styles from '../styles/About.module.css';
-import booksImage from '../assets/books.jpg';
 
 interface SemesterData {
   year: string;
