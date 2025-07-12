@@ -105,7 +105,10 @@
   color: #e0e0e0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   position: relative;
-  overflow: hidden;
+  overflow: auto; /* Changed from hidden to auto to enable scrolling */
+  white-space: pre; /* Preserve all whitespace and line breaks */
+  word-wrap: normal; /* Prevent wrapping of long lines */
+  max-width: 100%;
 }
 
 .javaCode::before {
@@ -127,8 +130,44 @@
 .codeLine {
   display: block;
   margin-bottom: 0.3rem;
+  white-space: pre-wrap; /* Allow wrapping only at explicit line breaks */
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .javaCode {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .javaCode {
+    font-size: 0.75rem;
+    padding: 0.7rem;
+  }
+  
+  .interactiveElement {
+    margin: 1rem 0;
+    overflow: visible;
+  }
+  
+  .codeSnippet {
+    min-width: 280px; /* Ensure minimum width for readability */
+  }
+}
+@media (max-width: 360px) {
+  .javaCode {
+    font-size: 0.7rem;
+    padding: 0.6rem;
+  }
+  
+  .codeSnippet {
+    transform: scale(0.95);
+    transform-origin: left;
+  }
+}
 .keyword {
   color: #569cd6;
   font-weight: bold;
@@ -316,18 +355,67 @@
 @media (max-width: 480px) {
   .container {
     padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
   }
   
   .content {
     padding: 1.5rem;
+    margin: 1rem 0;
+    width: 95%;
   }
   
   .mainTitle {
     font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .introText {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .interactiveElement {
+    margin: 1.5rem 0;
+  }
+  
+  .javaCode {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+  
+  .quote {
+    font-size: 1rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
   }
   
   .exploreButton {
-    padding: 12px 25px;
-    font-size: 1rem;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .glow1, .glow2, .glow3 {
+    display: none; /* Optional: hide glow effects on very small screens */
+  }
+}
+
+@media (max-width: 360px) {
+  .mainTitle {
+    font-size: 1.8rem;
+  }
+  
+  .introText {
+    font-size: 0.85rem;
+  }
+  
+  .quote {
+    font-size: 0.9rem;
+  }
+  
+  .javaCode {
+    font-size: 0.75rem;
   }
 }
