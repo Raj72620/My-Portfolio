@@ -29,6 +29,13 @@ body {
   scroll-behavior: smooth;
 }
 
+
+/* Prevent horizontal scrolling globally */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
