@@ -1,3 +1,4 @@
+/* About.module.css */
 /* ===== Base Styles ===== */
 .aboutSection {
   position: relative;
@@ -549,70 +550,107 @@
   background: rgba(107, 169, 220, 0.7);
 }
 
-/* Responsive adjustments */
+/* ===== Mobile Responsive Styles ===== */
 @media (max-width: 768px) {
+  .aboutSection {
+    flex-direction: column;
+    padding: 1rem;
+    min-height: auto;
+    padding-bottom: 3rem;
+  }
+
   .mainContainer {
-    max-width: 90%;
+    max-width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
   }
-  
+
   .sideContainer {
-    max-width: 70%;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    transform: none !important;
+    opacity: 1;
+    filter: none;
   }
-  
-  .leftContainer {
-    left: 0;
-    transform: translateX(-70%) scale(0.8);
-  }
-  
+
+  .leftContainer, 
   .rightContainer {
-    right: 0;
-    transform: translateX(70%) scale(0.8);
+    left: auto;
+    right: auto;
+    transform: none !important;
   }
-  
-  .leftContainer.active ~ .mainContainer {
-    transform: translateX(40%);
-  }
-  
-  .rightContainer.active ~ .mainContainer {
-    transform: translateX(-40%);
-  }
-  
-  .mainContainer.active ~ .leftContainer {
-    transform: translateX(-90%) scale(0.8);
-  }
-  
-  .mainContainer.active ~ .rightContainer {
-    transform: translateX(90%) scale(0.8);
-  }
-  
+
   .btechContainer {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
   }
-  
+
   .logoCircle {
     width: 100px;
     height: 100px;
+    margin-bottom: 1rem;
   }
-  
+
   .infoStack {
     margin: 1.5rem 0;
     gap: 1rem;
   }
-  
-  .performanceButton {
-    padding: 0.8rem 1.8rem;
+
+  .infoItem {
+    padding: 0.8rem;
+  }
+
+  .infoItem h3 {
+    font-size: 1rem;
+  }
+
+  .infoItem p {
     font-size: 0.9rem;
   }
-  
+
+  .performanceButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  /* Modal adjustments */
+  .modalBackground {
+    width: 95%;
+    max-height: 90vh;
+  }
+
   .modalContent {
     padding: 1.5rem;
   }
-  
+
   .modalTitle {
     font-size: 1.8rem;
   }
-  
+
+  .modalSubtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
   .semesterGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoCircle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .infoItem {
+    padding: 0.6rem;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
   }
 }
