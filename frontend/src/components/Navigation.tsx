@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react'; // Add useEffect
 import { useNavigate } from 'react-router-dom';
 import ScrollLink from './ScrollLink';
 import styles from '../styles/Navigation.module.css';
@@ -12,6 +12,7 @@ interface NavLink {
 
 const Navigation: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // Add this state
   const navigate = useNavigate();
   
   const links: NavLink[] = [
@@ -21,6 +22,20 @@ const Navigation: FC = () => {
     { id: 'projects', label: 'My Projects' },
     { id: 'collaborate', label: 'Collaborate' }
   ];
+
+  // Add this useEffect for scroll handling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,7 +56,7 @@ const Navigation: FC = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <nav className={styles.nav}>
         <div 
           className={styles.left} 
