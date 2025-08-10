@@ -2,10 +2,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa';
 import styles from '../styles/Home.module.css';
-import photo1 from '../assets/hackathon2.jpg';
-import photo2 from '../assets/hackathon2.jpg';
-import photo3 from '../assets/hackathon2.jpg';
-import photo4 from '../assets/hackathon2.jpg';
+import photo1 from '../assets/codeProfile1.jpg';
+import photo2 from '../assets/codeProfile2.jpg';
+import photo3 from '../assets/codeProfile3.jpg';
+import photo4 from '../assets/codeProfile4.jpg';
 
 const Home = () => {
   const [showHello, setShowHello] = useState(true);

@@ -6,15 +6,15 @@ import codingImg from '../assets/coding-image.png';
 
 export const projects: Project[] = [
   {
-    id: "video-conference",
-    title: "Video Conference",
-    tech: ["Node","Express","React","Sockets","WebRTC"],
-    image: videConferenceImg,
-    description: "Real-time video conferencing app with WebRTC and Socket.IO",
-    github: "#",
-    live: "#",
+    id: "video-conference-app",
+    title: "Video Conference App",
     type: "Web Application",
-    locked: true 
+    description: "A real-time video conferencing application with screen sharing and chat functionality.",
+    tech: ["React", "WebRTC", "Socket.io", "Node.js", "Express"],
+      image: videConferenceImg,
+    github: "https://github.com/Raj72620/Video-Conference-app",
+    live: "https://videoconferenceapp123.netlify.app",
+    locked: false
   },
   {
     id: "blessed-startups",

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../styles/CertificateViewer.module.css';
 
-const uiUxCertificate = new URL('../assets/Ui-Ux certificate.jpg', import.meta.url).href;
+const Leadershipx = new URL('../assets/Leadership.jpg', import.meta.url).href;
 const mongodbCertificate = new URL('../assets/Mongodb-Certificate.jpg', import.meta.url).href;
 const fullStackCertificate = new URL('../assets/full-stack-web-dev.jpg', import.meta.url).href;
 
@@ -11,10 +11,10 @@ const CertificateViewer = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
-  const certificates: Record<string, { image: string; title: string }> = {
-    'ui-ux-certificate': {
-      image: uiUxCertificate,
-      title: 'UI/UX Certification',
+const certificates: Record<string, { image: string; title: string }> = {
+    'Leadership': {  
+      image: Leadershipx,  
+      title: 'Leadership',  
     },
     'mongodb-certificate': {
       image: mongodbCertificate,

@@ -79,11 +79,11 @@ const Skills: FC = () => {
   ];
 
   const certifications: Certification[] = [
-    {
-      title: 'UI/UX Certification',
-      id: 'ui-ux-certificate',
-      available: true
-    },
+   {
+    title: 'Leadership Certification',
+    id: 'Leadership',
+    available: true
+  },
     {
       title: 'MongoDB Certification',
       id: 'mongodb-certificate',
