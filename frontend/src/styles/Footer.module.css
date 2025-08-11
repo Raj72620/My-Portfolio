@@ -1,82 +1,167 @@
-/* src/styles/Footer.module.css */
 .footer {
     background: linear-gradient(135deg, #1a1a2e, #0a0a16);
     padding: 3rem 0 2rem;
     border-top: 1px solid rgba(107, 169, 220, 0.15);
     position: relative;
     overflow: hidden;
-  }
-  
-  .container {
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
-  }
-  
-  .contentWrapper {
+}
+
+.contentWrapper {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-  }
-  
-  .leftSection {
+}
+
+.leftSection {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     text-align: center;
-  }
-  
-  .copyright {
+}
+
+.middleSection {
+    display: flex;
+    justify-content: center;
+}
+
+.codingProfiles {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.codingLink {
+    position: relative;
+    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
+}
+
+.codingLinkInner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.codingLinkText {
+    font-size: 0.95rem;
+}
+
+.codingLinkShine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent,
+        transparent
+    );
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.codingLink:hover {
+    background: rgba(255, 50, 50, 0.15);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.2);
+    transform: translateY(-2px);
+    color: #ff5252;
+}
+
+.codingLink:hover .codingLinkShine {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(30deg) translate(-30%, -30%);
+    }
+    100% {
+        transform: rotate(30deg) translate(30%, 30%);
+    }
+}
+
+.codingIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #ff6b6b;
+}
+
+.copyright {
     color: rgba(255, 255, 255, 0.75);
     font-size: 0.9rem;
     letter-spacing: 0.05em;
-  }
-  
-  .legalLinks {
+}
+
+.legalLinks {
     display: flex;
     gap: 1rem;
     justify-content: center;
     align-items: center;
-  }
-  
-  .legalLink {
+}
+
+.legalLink {
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.85rem;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  .legalLink:hover {
+}
+
+.legalLink:hover {
     color: var(--primary-color);
-  }
-  
-  .divider {
+}
+
+.divider {
     color: rgba(255, 255, 255, 0.2);
     font-size: 0.8rem;
-  }
-  
-  .rightSection {
+}
+
+.rightSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-  }
-  
-  .socialLinks {
+}
+
+.socialLinks {
     display: flex;
     gap: 1.75rem;
-  }
-  
-  .socialLink {
+}
+
+.socialLink {
     color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     padding: 0.5rem;
     display: grid;
     place-items: center;
-  }
-  
-  .socialLink::after {
+}
+
+.socialLink::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -85,24 +170,24 @@
     height: 2px;
     background: var(--primary-color);
     transition: width 0.3s ease, left 0.3s ease;
-  }
-  
-  .socialLink:hover {
+}
+
+.socialLink:hover {
     color: var(--primary-color);
     transform: translateY(-3px);
-  }
-  
-  .socialLink:hover::after {
+}
+
+.socialLink:hover::after {
     width: 100%;
     left: 0;
-  }
-  
-  .icon {
+}
+
+.icon {
     width: 1.5rem;
     height: 1.5rem;
-  }
-  
-  .backToTop {
+}
+
+.backToTop {
     background: rgba(107, 169, 220, 0.1);
     border: 1px solid rgba(107, 169, 220, 0.2);
     color: var(--primary-color);
@@ -114,48 +199,54 @@
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
-  }
-  
-  .backToTop:hover {
+}
+
+.backToTop:hover {
     background: rgba(107, 169, 220, 0.2);
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(107, 169, 220, 0.2);
-  }
-  
-  .arrowIcon {
+}
+
+.arrowIcon {
     width: 1.25rem;
     height: 1.25rem;
-  }
-  
-  @media (min-width: 768px) {
+}
+
+@media (min-width: 768px) {
     .contentWrapper {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-end;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
-  
+
     .leftSection {
-      text-align: left;
-      gap: 0.75rem;
+        text-align: left;
+        gap: 0.75rem;
     }
-  
+
     .legalLinks {
-      justify-content: flex-start;
+        justify-content: flex-start;
     }
-  
+
     .rightSection {
-      flex-direction: row-reverse;
-      align-items: center;
-      gap: 2.5rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
     }
-  }
-  
-  @media (min-width: 1024px) {
+
+    .middleSection {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-width: 1024px) {
     .footer {
-      padding: 4rem 0 2.5rem;
+        padding: 4rem 0 2.5rem;
     }
     
     .container {
-      padding: 0 4rem;
+        padding: 0 4rem;
     }
-  }
+}

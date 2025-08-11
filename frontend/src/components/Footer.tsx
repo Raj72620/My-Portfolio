@@ -1,5 +1,5 @@
-// components/Footer.tsx
 import { FaLinkedin, FaGithub, FaFacebook, FaArrowUp } from 'react-icons/fa';
+import { SiGeeksforgeeks, SiLeetcode } from 'react-icons/si';
 import styles from '../styles/Footer.module.css';
 
 const Footer = () => {
@@ -18,6 +18,19 @@ const Footer = () => {
       icon: <FaFacebook className={styles.icon} />,
       url: 'https://www.facebook.com/nishanth.raj.50552?mibextid=ZbWKwL',
       label: 'Facebook'
+    }
+  ];
+
+  const codingProfiles = [
+    {
+      icon: <SiGeeksforgeeks className={styles.codingIcon} />,
+      url: 'https://www.geeksforgeeks.org/user/renusin39mc/',
+      label: 'GeeksForGeeks'
+    },
+    {
+      icon: <SiLeetcode className={styles.codingIcon} />,
+      url: 'https://leetcode.com/u/Nishanth-Raj/',
+      label: 'LeetCode'
     }
   ];
 
@@ -40,6 +53,28 @@ const Footer = () => {
               <a href="/privacy" className={styles.legalLink}>Privacy Policy</a>
               <span className={styles.divider}>|</span>
               <a href="/terms" className={styles.legalLink}>Terms of Service</a>
+            </div>
+          </div>
+
+          {/* New Middle Section */}
+          <div className={styles.middleSection}>
+            <div className={styles.codingProfiles}>
+              {codingProfiles.map((profile, index) => (
+                <a
+                  key={index}
+                  href={profile.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.codingLink}
+                  aria-label={profile.label}
+                >
+                  <span className={styles.codingLinkInner}>
+                    {profile.icon}
+                    <span className={styles.codingLinkText}>{profile.label}</span>
+                  </span>
+                  <span className={styles.codingLinkShine}></span>
+                </a>
+              ))}
             </div>
           </div>
 

@@ -15,11 +15,11 @@ const ExperiencePerformanceViewer = () => {
   const certificates: Record<string, { image: string; title: string }> = {
     'sih-certificate': {  
       image: SIHcertificate,  
-      title: 'Smart India Hackathon Winner',  
+      title: 'Smart India Hackathon ',  
     },
     'hack-azure-certificate': {
       image: HackAzureCertificate,
-      title: 'Microsoft Azure Hackathon Winner',
+      title: 'Microsoft Azure Hackathon ',
     },
     'pro-solvo-certificate': {
       image: ProSolvoCertificate,
@@ -27,7 +27,7 @@ const ExperiencePerformanceViewer = () => {
     },
     'techno-fest-certificate': {
       image: TechnoFestCertificate,
-      title: 'National TechnoFest Excellence Award',
+      title: 'TechnoFest Excellence ',
     },
   };
 
