@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Collaborate from './components/Collaborate';
 import Footer from './components/Footer';
 import CertificateViewer from './components/CertificateViewer';
+import ExperiencePerformanceViewer from './components/ExperiencePerformanceViewer';
 import ProjectDetails from './components/ProjectDetails';
 import './styles/global.css';
 
@@ -55,6 +56,7 @@ function AppContent() {
           {/* Other routes */}
           <Route path="/certificates/:certId" element={<CertificateViewer />} />
           <Route path="/projects/:projectId" element={<ProjectDetails />} />
+                <Route path="/experience-performance/:certId" element={<ExperiencePerformanceViewer />} />
         </Routes>
       </AnimatePresence>
     </>

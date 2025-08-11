@@ -79,17 +79,17 @@ const Skills: FC = () => {
   ];
 
   const certifications: Certification[] = [
-   {
-    title: 'Leadership Certification',
-    id: 'Leadership',
-    available: true
-  },
+    {
+      title: 'Leadership Certification',
+      id: 'Leadership',
+      available: true
+    },
     {
       title: 'MongoDB Certification',
       id: 'mongodb-certificate',
       available: true
     },
-      {
+    {
       title: 'Full Stack Web Dev',
       id: 'fullstack-certificate',
       available: true
@@ -100,6 +100,29 @@ const Skills: FC = () => {
       available: false
     }
   ];
+
+const experiencePerformanceCerts: Certification[] = [
+  {
+    title: 'Smart India Hackathon',
+    id: 'sih-certificate',
+    available: true
+  },
+  {
+    title: 'Azure Hackathon',
+    id: 'hack-azure-certificate',
+    available: true
+  },
+  {
+    title: 'Pro Solvo Challenge',
+    id: 'pro-solvo-certificate',
+    available: true
+  },
+  {
+    title: 'TechnoFest Award',
+    id: 'techno-fest-certificate',
+    available: true
+  }
+];
 
   return (
     <section id="skills" ref={sectionRef} className={styles.skillsSection}>
@@ -139,27 +162,25 @@ const Skills: FC = () => {
             ))}
           </div>
 
+          {/* Certifications Section */}
           <div className={styles.certificatesContainer}>
             <h3 className={styles.certificationsTitle}>
               <i className="fas fa-award" /> Certifications
             </h3>
             <div className={styles.certificatesGrid}>
-
-             {certifications.map((cert, index) => (
-  cert.available ? (
-    <Link
-      key={index}
-      to={`/certificates/${cert.id}`}
-      className={styles.certificateBox}
-    >
-      <i className="fas fa-certificate" />
-      <p className={styles.certificateText}>{cert.title}</p>
-      <div className={styles.shiningEffect}></div>
-      <div className={styles.certificateHoverGlow}></div>
-      <span className={styles.availableGlowBadge}>Completed</span>
-    </Link>
-
-
+              {certifications.map((cert, index) => (
+                cert.available ? (
+                  <Link
+                    key={index}
+                    to={`/certificates/${cert.id}`}
+                    className={styles.certificateBox}
+                  >
+                    <i className="fas fa-certificate" />
+                    <p className={styles.certificateText}>{cert.title}</p>
+                    <div className={styles.shiningEffect}></div>
+                    <div className={styles.certificateHoverGlow}></div>
+                    <span className={styles.availableGlowBadge}>Completed</span>
+                  </Link>
                 ) : (
                   <div
                     key={index}
@@ -176,6 +197,28 @@ const Skills: FC = () => {
               ))}
             </div>
           </div>
+
+          {/* Experience & Performance Section - Blue Theme */}
+<div className={styles.experiencePerformanceContainer}>
+  <h3 className={styles.experiencePerformanceTitle}>
+    <i className="fas fa-trophy" /> Experience & Performance
+  </h3>
+  <div className={styles.experiencePerformanceGrid}>
+    {experiencePerformanceCerts.map((cert, index) => (
+      <Link
+        key={index}
+        to={`/experience-performance/${cert.id}`}
+        className={styles.experiencePerformanceBox}
+      >
+        <i className="fas fa-medal" />
+        <p className={styles.experiencePerformanceText}>{cert.title}</p>
+        <div className={styles.shiningEffect}></div>
+        <div className={styles.experiencePerformanceHoverGlow}></div>
+        <span className={styles.availableGlowBadge}>Achieved</span>
+      </Link>
+    ))}
+  </div>
+</div>
         </div>
       </div>
     </section>

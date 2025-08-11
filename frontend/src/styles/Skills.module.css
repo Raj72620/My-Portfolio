@@ -552,61 +552,156 @@
   animation: pulseBlue 1.5s infinite alternate;
 }
 
-@keyframes pulseBlue {
-  0% {
-    box-shadow:
-      0 0 10px rgba(107, 169, 220, 0.3),
-      inset 0 0 5px rgba(107, 169, 220, 0.3);
-  }
-  100% {
-    box-shadow:
-      0 0 20px rgba(107, 169, 220, 0.6),
-      inset 0 0 10px rgba(107, 169, 220, 0.6);
-  }
+
+
+
+
+
+/* Experience & Performance Section */
+/* Experience & Performance Section - Blue Theme */
+.experiencePerformanceContainer {
+  background: rgba(15, 23, 42, 0.7);
+  padding: 25px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 169, 220, 0.25);
+  box-shadow: 
+    0 0 25px rgba(107, 169, 220, 0.15),
+    inset 0 0 20px rgba(107, 169, 220, 0.1);
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
 }
 
-
-@keyframes pulseRed {
-  0% {
-    box-shadow: 
-      0 0 10px rgba(255, 0, 0, 0.4),
-      inset 0 0 5px rgba(255, 100, 100, 0.4);
-  }
-  100% {
-    box-shadow: 
-      0 0 20px rgba(255, 0, 0, 0.6),
-      inset 0 0 10px rgba(255, 100, 100, 0.6);
-  }
+.experiencePerformanceTitle {
+  font-size: 1.8rem;
+  color: #6ba9dc;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 
+    0 0 8px rgba(107, 169, 220, 0.7),
+    0 0 20px rgba(107, 169, 220, 0.3);
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
-/* Responsive Adjustments */
+.experiencePerformanceTitle i {
+  color: #6ba9dc;
+  font-size: 2rem;
+  filter: drop-shadow(0 0 8px rgba(107, 169, 220, 0.7));
+}
+
+.experiencePerformanceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.experiencePerformanceBox {
+  position: relative;
+  padding: 22px 16px;
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 14px;
+  border: 1px solid rgba(107, 169, 220, 0.3);
+  color: white;
+  transition: all 0.35s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 160px;
+  justify-content: center;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 0 10px rgba(107, 169, 220, 0.1);
+}
+
+.experiencePerformanceBox:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 8px 30px rgba(107, 169, 220, 0.4),
+    inset 0 0 15px rgba(107, 169, 220, 0.15);
+  background: rgba(40, 51, 69, 0.7);
+}
+
+.experiencePerformanceText {
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(107, 169, 220, 0.5);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.experiencePerformanceBox:hover .experiencePerformanceText {
+  text-shadow: 
+    0 0 10px rgba(107, 169, 220, 0.8),
+    0 0 20px rgba(107, 169, 220, 0.3);
+}
+
+.experiencePerformanceBox i {
+  color: #6ba9dc;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  text-shadow: 0 0 10px rgba(107, 169, 220, 0.5);
+  transition: all 0.3s ease;
+}
+
+.experiencePerformanceBox:hover i {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgba(107, 169, 220, 0.8));
+}
+
+.experiencePerformanceHoverGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(107, 169, 220, 0.15),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.experiencePerformanceBox:hover .experiencePerformanceHoverGlow {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
 @media (max-width: 1024px) {
-  .certificatesGrid {
+  .experiencePerformanceGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 }
 
 @media (max-width: 768px) {
-  .certificatesContainer {
+  .experiencePerformanceContainer {
     padding: 20px;
   }
   
-  .certificateBox {
+  .experiencePerformanceBox {
     min-height: 140px;
     padding: 18px 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .certificatesGrid {
+  .experiencePerformanceGrid {
     grid-template-columns: 1fr;
   }
-  
-  .certificationsTitle {
-    font-size: 1.5rem;
-  }
 }
+
 
 
 

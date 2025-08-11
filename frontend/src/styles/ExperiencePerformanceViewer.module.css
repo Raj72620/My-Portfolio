@@ -1,0 +1,204 @@
+.experiencePerformanceViewerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+}
+
+.certificateHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.certificateHeader h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #6ba9dc, #8a6bdc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backButton {
+  background: rgba(107, 169, 220, 0.1);
+  color: #6ba9dc;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(107, 169, 220, 0.3);
+}
+
+.backButton:hover {
+  background: rgba(107, 169, 220, 0.2);
+  transform: translateX(-5px);
+  box-shadow: 0 5px 15px rgba(107, 169, 220, 0.2);
+}
+
+.certificateImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.certificateImage {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.certificateImage:hover {
+  transform: scale(1.01);
+}
+
+.certificateOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(0, 0, 0, 0.3) 90%
+  );
+  pointer-events: none;
+  border-radius: 15px;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(107, 169, 220, 0.3);
+  border-radius: 50%;
+  border-top-color: #6ba9dc;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.errorContent {
+  background: rgba(20, 22, 40, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 600px;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.errorContainer h2 {
+  font-size: 2rem;
+  color: #dc6b6b;
+  margin-bottom: 1rem;
+}
+
+.errorContainer p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .experiencePerformanceViewerContainer {
+    padding: 20px 15px;
+  }
+
+  .certificateHeader {
+    align-items: center;
+    text-align: center;
+  }
+
+  .certificateHeader h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .backButton {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .certificateImageContainer {
+    padding: 15px;
+  }
+
+  .certificateImage {
+    max-height: 75vh;
+  }
+
+  .errorContent {
+    padding: 1.5rem;
+  }
+
+  .errorContainer h2 {
+    font-size: 1.5rem;
+  }
+
+  .errorContainer p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificateHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .backButton {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .certificateImageContainer {
+    padding: 10px;
+  }
+
+  .certificateImage {
+    max-height: 70vh;
+  }
+
+  .errorContent {
+    padding: 1rem;
+  }
+}
