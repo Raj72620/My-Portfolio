@@ -12,7 +12,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',          // Local dev
   'https://my-portfolio-db4k.onrender.com',  // Your backend
-  'https://your-frontend-url.com'   // ⭐ Add your frontend URL here when deployed
+  'http://myportfolio9618.netlify.app'   // ⭐  your frontend URL here when deployed
 ];
 
 app.use(cors({
