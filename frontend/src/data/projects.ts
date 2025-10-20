@@ -16,6 +16,17 @@ export const projects: Project[] = [
     live: "https://videoconferenceapp123.netlify.app",
     locked: false
   },
+    {
+    id: "Discussions",
+    title: "Discussion Platfrom",
+    tech: ["React", "Express", "MongoDB", "Socket.IO"],
+    image: DiscussionsImg,
+    description: "A discussion page where users can post and discuss topics",
+    github: "https://github.com/Raj72620/Discuss-CodeSphere",
+    live: "http://discusshubb.netlify.app",
+    type: "Web Application",
+    locked: false
+  },
   {
     id: "blessed-startups",
     title: "Startups",
@@ -48,16 +59,5 @@ export const projects: Project[] = [
     live: "https://registration-forrmm.netlify.app/",
     type: "Web Application",
     locked: false // Only this project is unlocked
-  },
-  {
-    id: "Discussions",
-    title: "Discussion Platfrom",
-    tech: ["React", "Express", "MongoDB", "Socket.IO"],
-    image: DiscussionsImg,
-    description: "A discussion page where users can post and discuss topics",
-    github: "#",
-    live: "#",
-    type: "Web Application",
-    locked: true
-  },
+  }
 ];
