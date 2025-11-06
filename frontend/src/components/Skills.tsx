@@ -64,7 +64,7 @@ const Skills: FC = () => {
     {
       title: 'Backend',
       icon: <i className="fas fa-server" />,
-      skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets',]
+      skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets']
     },
     {
       title: 'Database',
@@ -107,19 +107,19 @@ const experiencePerformanceCerts: Certification[] = [
     id: 'sih-certificate',
     available: true
   },
-  {
-    title: 'Azure Hackathon',
-    id: 'hack-azure-certificate',
+    {
+    title: 'Intellecthon Hackathon',
+    id: 'runnerup-Certificate',
     available: true
   },
-  {
+    {
     title: 'Pro Solvo Challenge',
     id: 'pro-solvo-certificate',
     available: true
   },
   {
-    title: 'TechnoFest Award',
-    id: 'techno-fest-certificate',
+    title: 'Azure Hackathon',
+    id: 'hack-azure-certificate',
     available: true
   }
 ];

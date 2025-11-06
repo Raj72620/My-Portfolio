@@ -5,7 +5,7 @@ import styles from '../styles/ExperiencePerformanceViewer.module.css';
 const SIHcertificate = new URL('../assets/SIHcertificate.jpg', import.meta.url).href;
 const HackAzureCertificate = new URL('../assets/HackAzureCertificate.jpg', import.meta.url).href;
 const ProSolvoCertificate = new URL('../assets/ProSolvoCertificate.jpg', import.meta.url).href;
-const TechnoFestCertificate = new URL('../assets/TechnoFestCertificate.jpg', import.meta.url).href;
+const runnerupCertificate = new URL('../assets/runnerupCertificate.jpg', import.meta.url).href;
 
 const ExperiencePerformanceViewer = () => {
   const { certId } = useParams<{ certId: string }>();
@@ -25,9 +25,9 @@ const ExperiencePerformanceViewer = () => {
       image: ProSolvoCertificate,
       title: 'Pro Solvo Tech Challenge Champion',
     },
-    'techno-fest-certificate': {
-      image: TechnoFestCertificate,
-      title: 'TechnoFest Excellence ',
+    'runnerup-Certificate': {
+      image: runnerupCertificate,
+      title: 'Intellecthon Hackathon ',
     },
   };
 

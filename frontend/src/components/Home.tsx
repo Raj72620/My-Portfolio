@@ -15,7 +15,7 @@ const Home = () => {
   const photos = [photo1, photo2, photo3, photo4];
 
   // Use the view link instead of download link
-  const RESUME_VIEW_LINK = "https://drive.google.com/file/d/1IpyxHFbgFr23iMa8MITFzSrRhhoSp6J1/view";
+  const RESUME_VIEW_LINK = "https://drive.google.com/file/d/1xiT24E0DgYygnpvr76QwHVpYqKKpMpVy/view?usp=sharing";
 
   // Hello animation timer
   useEffect(() => {
