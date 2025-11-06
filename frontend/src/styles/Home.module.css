@@ -512,8 +512,8 @@
 }
 
 
+/* Resume Button Styles */
 .resumeButton {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -523,12 +523,11 @@
   text-decoration: none;
   transition: all 0.3s ease;
   border: none;
-  cursor: not-allowed;
-  background: rgba(255, 50, 50, 0.15);
-  backdrop-filter: blur(10px);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 50, 50, 0.3);
-  box-shadow: 0 0 15px rgba(255, 50, 50, 0.3);
+  cursor: pointer;
+  background: linear-gradient(135deg, #6ba9dc 0%, #8a6bdc 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(107, 169, 220, 0.3);
+  position: relative;
   overflow: hidden;
 }
 
@@ -542,27 +541,24 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 50, 50, 0.4),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
   transition: 0.5s;
 }
 
 .resumeButton:hover {
-  box-shadow: 0 0 20px rgba(255, 50, 50, 0.5), 0 0 40px rgba(255, 50, 50, 0.3);
-  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 169, 220, 0.4);
 }
 
 .resumeButton:hover::before {
   left: 100%;
 }
 
-.lockBadge {
-  margin-left: 8px;
-  font-size: 0.9rem;
-  animation: pulse 2s infinite;
+.buttonIcon {
+  font-size: 1.1rem;
 }
-
 @keyframes pulse {
   0% {
     opacity: 0.6;

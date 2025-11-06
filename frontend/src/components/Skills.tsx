@@ -64,7 +64,7 @@ const Skills: FC = () => {
     {
       title: 'Backend',
       icon: <i className="fas fa-server" />,
-      skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets','Restful APIs']
+      skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets',]
     },
     {
       title: 'Database',

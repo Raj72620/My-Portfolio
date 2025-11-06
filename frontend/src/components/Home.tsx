@@ -10,8 +10,12 @@ import photo4 from '../assets/codeProfile4.jpg';
 const Home = () => {
   const [showHello, setShowHello] = useState(true);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
   
   const photos = [photo1, photo2, photo3, photo4];
+
+  // Use the view link instead of download link
+  const RESUME_VIEW_LINK = "https://drive.google.com/file/d/1IpyxHFbgFr23iMa8MITFzSrRhhoSp6J1/view";
 
   // Hello animation timer
   useEffect(() => {
@@ -29,6 +33,13 @@ const Home = () => {
     
     return () => clearInterval(interval);
   }, [showHello, photos.length]);
+
+  // Open resume in viewer
+  const handleViewResume = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.open(RESUME_VIEW_LINK, '_blank', 'noopener,noreferrer');
+  };
+
 
   // Animation variants
   const introVariants = {
@@ -55,28 +66,29 @@ const Home = () => {
     exit: { opacity: 0, scale: 0.9 }
   };
 
-const buttonVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20 
-  },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.8 + i * 0.1,
-      type: "spring" as const,
-      stiffness: 100
+  const buttonVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20 
+    },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.8 + i * 0.1,
+        type: "spring" as const,
+        stiffness: 100
+      }
+    }),
+    hover: {
+      scale: 1.05,
+      y: -3,
+      transition: { 
+        duration: 0.2 
+      }
     }
-  }),
-  hover: {
-    scale: 1.05,
-    y: -3,
-    transition: { 
-      duration: 0.2 
-    }
-  }
-} as const; // Add 'as const' assertion
+  } as const;
+
   return (
     <section className={styles.hero} id="home">
       <div className={styles.container}>
@@ -84,16 +96,16 @@ const buttonVariants = {
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Wallpoet&display=swap" rel="stylesheet"></link>
 
         <div className={styles.leftSection}>
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.2 }}
-  className={styles.introHeader}
->
-  <h1 className={styles.nameTitle}>Nishanth Raj</h1>
-  <div className={styles.laserLine}></div>
-  <p className={styles.profession}>Tech Enthusiast</p>
-</motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className={styles.introHeader}
+          >
+            <h1 className={styles.nameTitle}>Nishanth Raj</h1>
+            <div className={styles.laserLine}></div>
+            <p className={styles.profession}>Tech Enthusiast</p>
+          </motion.div>
 
           <div className={styles.infoCard}>
             {[
@@ -122,7 +134,7 @@ const buttonVariants = {
           {/* Action Buttons Section */}
           <div className={styles.actionButtons}>
             <motion.a
-              href='https://github.com/Raj72620' // Replace with your GitHub URL
+              href='https://github.com/Raj72620' 
               target="_blank"
               rel="noopener noreferrer"
               className={styles.githubButton}
@@ -136,19 +148,19 @@ const buttonVariants = {
               <span>GitHub</span>
             </motion.a>
 
-       <motion.button
-  className={styles.resumeButton}
-  variants={buttonVariants}
-  initial="hidden"
-  animate="visible"
-  custom={1}
-  whileHover="hover"
-  disabled
->
-  <FaFilePdf className={styles.buttonIcon} />
-  <span>Resume </span>
-  <span className={styles.lockBadge}>🔒</span>
-</motion.button>
+            {/* Simple Resume Button */}
+            <motion.button
+              className={styles.resumeButton}
+              variants={buttonVariants}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+              whileHover="hover"
+              onClick={handleViewResume}
+            >
+              <FaFilePdf className={styles.buttonIcon} />
+              <span>View Resume</span>
+            </motion.button>
           </div>
         </div>
 
@@ -237,6 +249,7 @@ const buttonVariants = {
               </div>
             )}
           </AnimatePresence>
+          
           {/* Contact Links */}
           <motion.a
             href="http://www.linkedin.com/in/nishanth-singh"
