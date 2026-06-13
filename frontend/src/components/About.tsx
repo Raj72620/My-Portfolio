@@ -9,11 +9,11 @@ const CodingProfiles: FC = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     const createStars = () => {
       if (!containerRef.current) return;
       const container = containerRef.current;
-      
+
       for (let i = 0; i < 50; i++) {
         const star = document.createElement('div');
         star.className = styles.star;
@@ -29,7 +29,7 @@ const CodingProfiles: FC = () => {
     };
 
     createStars();
-    
+
     return () => {
       if (containerRef.current) {
         const stars = containerRef.current.querySelectorAll(`.${styles.star}`);
@@ -45,10 +45,10 @@ const CodingProfiles: FC = () => {
   return (
     <section id="about" className={styles.aboutSection} ref={containerRef}>
       <div className={styles.nebula}></div>
-      
+
       <div className={styles.profilesHeader}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.titleGlow}>Coding Profiles</span>
+          <span className={styles.titleGlow}>Featured</span>
         </h2>
         <p className={styles.sectionSubtitle}>Connecting through code and contributions</p>
       </div>
@@ -57,9 +57,9 @@ const CodingProfiles: FC = () => {
         {/* GeeksForGeeks Container */}
         <div className={styles.profileCardWrapper}>
           <div className={styles.lightingBorder}></div>
-          <a 
-            href="https://www.geeksforgeeks.org/profile/nishanthraj" 
-            target="_blank" 
+          <a
+            href="https://www.geeksforgeeks.org/profile/nishanthraj"
+            target="_blank"
             rel="noopener noreferrer"
             className={`${styles.profileCard} ${styles.gfgCard}`}
           >
@@ -81,9 +81,9 @@ const CodingProfiles: FC = () => {
         {/* GitHub Container */}
         <div className={styles.profileCardWrapper}>
           <div className={styles.lightingBorder}></div>
-          <a 
-            href="https://github.com/Raj72620" 
-            target="_blank" 
+          <a
+            href="https://github.com/Raj72620"
+            target="_blank"
             rel="noopener noreferrer"
             className={`${styles.profileCard} ${styles.githubCard}`}
           >
@@ -102,7 +102,7 @@ const CodingProfiles: FC = () => {
           </a>
         </div>
       </div>
-      
+
       <div className={styles.decorationCircle}></div>
       <div className={`${styles.decorationCircle} ${styles.circle2}`}></div>
     </section>
