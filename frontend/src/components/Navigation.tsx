@@ -14,10 +14,10 @@ const Navigation: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false); // Add this state
   const navigate = useNavigate();
-  
+
   const links: NavLink[] = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'Coding Profiles' },
+    { id: 'about', label: 'Featured' },
     { id: 'skills', label: 'Skills & Experience' },
     { id: 'projects', label: 'Projects' },
     { id: 'collaborate', label: 'Collaborate' }
@@ -58,16 +58,16 @@ const Navigation: FC = () => {
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <nav className={styles.nav}>
-        <div 
-          className={styles.left} 
+        <div
+          className={styles.left}
           onClick={handleProgrammerClick}
           style={{ cursor: 'pointer' }}
         >
           Programmer
         </div>
-        
+
         <div className={styles.right}>
-          <button 
+          <button
             className={`${styles.menuButton} ${isMenuOpen ? styles.active : ''}`}
             onClick={toggleMenu}
             aria-label="Toggle navigation menu"
