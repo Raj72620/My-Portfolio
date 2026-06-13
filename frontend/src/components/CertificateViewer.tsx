@@ -5,6 +5,7 @@ import styles from '../styles/CertificateViewer.module.css';
 const Leadershipx = new URL('../assets/Leadership.jpg', import.meta.url).href;
 const mongodbCertificate = new URL('../assets/Mongodb-Certificate.jpg', import.meta.url).href;
 const fullStackCertificate = new URL('../assets/full-stack-web-dev.jpg', import.meta.url).href;
+const dsaCertificate = new URL('../assets/dsa.png', import.meta.url).href;
 
 const CertificateViewer = () => {
   const { certId } = useParams<{ certId: string }>();
@@ -23,6 +24,10 @@ const certificates: Record<string, { image: string; title: string }> = {
     'fullstack-certificate': {
       image: fullStackCertificate,
       title: 'Full Stack Web Development Certification',
+    },
+    'dsa-certificate': {
+      image: dsaCertificate,
+      title: 'DSA Certification',
     },
   };
 

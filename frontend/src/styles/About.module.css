@@ -1,656 +1,257 @@
-/* About.module.css */
-/* ===== Base Styles ===== */
+/* About.module.css - Futuristic Coding Profiles */
+
 .aboutSection {
   position: relative;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out forwards;
   width: 100%;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at center, #0a0a16 0%, #000000 100%);
+  background: #020205;
+  padding: 4rem 2rem;
+  z-index: 1;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* ===== Education Background ===== */
-.educationBackground {
+/* Background Effects */
+.nebula {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--books-image) center/cover;
-  opacity: 0.15;
-  z-index: 0;
-  filter: grayscale(50%) contrast(120%);
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(107, 169, 220, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(138, 107, 220, 0.05) 0%, transparent 40%);
+  z-index: -1;
 }
 
-/* ===== Container Layout ===== */
-.mainContainer {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  padding: 1.5rem;
-  z-index: 3;
-  transition: all 0.5s ease;
-}
-
-.sideContainer {
+.star {
   position: absolute;
-  width: 400px;
-  max-width: 40%;
-  padding: 1.5rem;
-  z-index: 2;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  filter: blur(2px);
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.sideContainer:hover {
-  filter: blur(1px);
-  opacity: 0.9;
-}
-
-.leftContainer {
-  left: 5%;
-  transform: translateX(-60%) scale(0.9);
-}
-
-.rightContainer {
-  right: 5%;
-  transform: translateX(60%) scale(0.9);
-}
-
-.sideContainer.active {
-  transform: translateX(0) scale(1);
-  filter: blur(0);
-  opacity: 1;
-  z-index: 4;
-}
-
-/* When side container is active, push main container slightly */
-.leftContainer.active ~ .mainContainer {
-  transform: translateX(30%);
-}
-
-.rightContainer.active ~ .mainContainer {
-  transform: translateX(-30%);
-}
-
-/* When middle container is active, push side containers */
-.mainContainer.active ~ .leftContainer {
-  transform: translateX(-80%) scale(0.9);
-}
-
-.mainContainer.active ~ .rightContainer {
-  transform: translateX(80%) scale(0.9);
-}
-
-/* ===== Floating Icons ===== */
-.floatingIcon {
-  position: absolute;
-  left: var(--pos-x);
-  top: var(--pos-y);
-  width: var(--size);
-  height: var(--size);
-  font-size: var(--size);
-  animation: floatIcon linear infinite;
-  animation-duration: var(--duration);
-  animation-delay: var(--delay);
-  pointer-events: none;
-  user-select: none;
+  background: white;
+  border-radius: 50%;
   opacity: 0.3;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-50%, -50%);
+  animation: twinkle linear infinite;
 }
 
-@keyframes floatIcon {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translate(-50%, calc(-50% - 50px)) rotate(180deg);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-    opacity: 0.2;
-  }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* ===== B-Tech Container Styles ===== */
-.btechContainer {
-  position: relative;
-  width: 100%;
-  padding: 2.5rem 1.5rem;
-  background: rgba(10, 12, 28, 0.7);
-  border-radius: 18px;
-  backdrop-filter: blur(8px);
-  box-shadow: 
-    0 0 0 1px rgba(107, 169, 220, 0.1),
-    0 0 30px rgba(0, 0, 0, 0.4),
-    0 0 80px rgba(107, 169, 220, 0.08);
+/* Header */
+.profilesHeader {
   text-align: center;
-  overflow: hidden;
+  margin-bottom: 4rem;
+  z-index: 2;
 }
 
-.btechContainer::before {
-  content: '';
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.titleGlow {
+  background: linear-gradient(90deg, #6ba9dc, #8a6bdc, #6ba9dc);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.sectionSubtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+/* Grid Container */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+  z-index: 2;
+}
+
+/* Profile Card */
+.profileCardWrapper {
+  position: relative;
+  padding: 2px;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profileCardWrapper:hover {
+  transform: translateY(-15px) scale(1.02);
+}
+
+.lightingBorder {
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(107, 169, 220, 0.1) 0%, transparent 70%);
-  animation: rotateGlow 20s linear infinite;
-  z-index: -1;
-}
-
-@keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.mounted .btechContainerWrapper,
-.mounted .btechContainer {
-  visibility: visible;
-}
-
-/* ===== Logo Circle ===== */
-.logoCircle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 0 auto 1.5rem;
-  border: 3px solid rgba(107, 169, 220, 0.3);
-  overflow: hidden;
-  transition: all 0.4s ease;
-  position: relative;
-  box-shadow: 
-    0 0 20px rgba(107, 169, 220, 0.2),
-    inset 0 0 20px rgba(107, 169, 220, 0.1);
-}
-
-.logoCircle:hover {
-  transform: scale(1.05) rotate(5deg);
-  box-shadow: 
-    0 0 30px rgba(107, 169, 220, 0.4),
-    inset 0 0 20px rgba(107, 169, 220, 0.2);
-}
-
-.logoCircle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-}
-
-.logoHalo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(107, 169, 220, 0.4) 0%, transparent 70%);
-  animation: pulseHalo 3s infinite ease-in-out;
+  background: conic-gradient(
+    transparent, 
+    rgba(107, 169, 220, 0.8), 
+    transparent 30%, 
+    transparent 50%, 
+    rgba(138, 107, 220, 0.8), 
+    transparent 80%
+  );
+  animation: rotateBorder 4s linear infinite;
   z-index: 0;
 }
 
-@keyframes pulseHalo {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+@keyframes rotateBorder {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* ===== Info Stack ===== */
-.infoStack {
+.profileCard {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: rgba(10, 10, 25, 0.95);
+  border-radius: 22px;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cardContent {
+  padding: 2rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  margin: 2rem 0;
+  justify-content: space-between;
 }
 
-.infoItem {
+.imageContainer {
   position: relative;
-  padding: 1rem;
-  background: rgba(15, 17, 35, 0.5);
-  border-radius: 10px;
-  border: 1px solid rgba(107, 169, 220, 0.1);
-  transition: all 0.3s ease;
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(107, 169, 220, 0.2);
 }
 
-.infoItem:hover {
-  background: rgba(20, 22, 40, 0.7);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.infoItem h3 {
-  color: #6ba9dc;
-  margin-bottom: 0.3rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+.profileCardWrapper:hover .profileImg {
+  transform: scale(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
+}
+
+.cardInfo h3 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
-.infoItem p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-/* ===== Performance Button ===== */
-.performanceButton {
-  position: relative;
-  background: linear-gradient(135deg, #6ba9dc, #8a6bdc);
-  color: white;
-  border: none;
-  padding: 0.9rem 2.2rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 
-    0 5px 15px rgba(107, 169, 220, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  margin-top: 0.8rem;
-  z-index: 1;
-}
-
-.performanceButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 
-    0 8px 25px rgba(107, 169, 220, 0.6),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
-}
-
-.performanceButton:active {
-  transform: translateY(1px);
-}
-
-.performanceButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg, 
-    rgba(255,255,255,0) 0%, 
-    rgba(255,255,255,0.3) 50%, 
-    rgba(255,255,255,0) 100%
-  );
-  animation: buttonShine 3s infinite;
-  opacity: 0.5;
-}
-
-.buttonSparkles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 50px;
-}
-
-.sparkle {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: sparkleFly linear;
-}
-
-@keyframes sparkleFly {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  10% {
-    opacity: 1;
-    width: 3px;
-    height: 3px;
-  }
-  100% {
-    transform: translate(var(--tx), var(--ty));
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-  }
-}
-
-@keyframes buttonShine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* ===== Modal Styles ===== */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(5px);
-}
-
-.modalBackground {
-  position: relative;
-  width: 90%;
-  max-width: 800px;
-  max-height: 80vh;
-  overflow-y: auto;
-  background: linear-gradient(135deg, #0a0a2a, #1a1a3a);
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(107, 169, 220, 0.5);
-  animation: modalEntrance 0.5s ease-out;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-@keyframes modalEntrance {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modalContent {
-  padding: 2rem;
-  position: relative;
-}
-
-.closeButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.closeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(90deg);
-}
-
-.modalTitle {
-  text-align: center;
-  color: white;
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #6ba9dc, #8a6bdc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.modalSubtitle {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-.semesterGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.2rem;
-  margin-top: 1.5rem;
-}
-
-.semesterCard {
-  background: rgba(20, 22, 40, 0.8);
-  border-radius: 15px;
-  padding: 1.2rem;
+.statusBadge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(107, 169, 220, 0.1);
   border: 1px solid rgba(107, 169, 220, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.semesterCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.semesterCard h3 {
+  border-radius: 20px;
   color: #6ba9dc;
-  margin-bottom: 1.2rem;
-  font-size: 1.3rem;
-  text-align: center;
-  border-bottom: 1px solid rgba(107, 169, 220, 0.3);
-  padding-bottom: 0.8rem;
-}
-
-.semesterInfo {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-.semesterInfo div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.semesterInfo span {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-}
-
-.semesterInfo p {
-  color: white;
-  font-weight: 600;
-}
-
-.completedValue {
-  color: #6ba9dc !important;
-}
-
-.pendingValue {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-.lockIcon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(2px);
-}
-
-.lockIcon svg {
-  width: 40px;
-  height: 40px;
-  fill: #ff4d4d;
-  margin-bottom: 0.5rem;
-  animation: pulse 2s infinite;
-}
-
-.lockIcon span {
-  color: #ff4d4d;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 
-.pending {
-  position: relative;
+.cardInfo p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-.pending::before {
-  content: '';
+/* Card Glow Effects */
+.cardGlow {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #ff4d4d, #ff9999);
-  animation: progress 2s infinite linear;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(107, 169, 220, 0.15) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
 
-@keyframes progress {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.profileCardWrapper:hover .cardGlow {
+  opacity: 1;
 }
 
-/* Scrollbar styles */
-.modalBackground::-webkit-scrollbar {
-  width: 8px;
+/* Decoration */
+.decorationCircle {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 1px dashed rgba(107, 169, 220, 0.1);
+  top: 10%;
+  right: -200px;
+  animation: spin 60s linear infinite;
+  z-index: 0;
 }
 
-.modalBackground::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+.circle2 {
+  width: 600px;
+  height: 600px;
+  bottom: -300px;
+  left: -300px;
+  animation-direction: reverse;
 }
 
-.modalBackground::-webkit-scrollbar-thumb {
-  background: rgba(107, 169, 220, 0.5);
-  border-radius: 10px;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.modalBackground::-webkit-scrollbar-thumb:hover {
-  background: rgba(107, 169, 220, 0.7);
-}
-
-/* ===== Mobile Responsive Styles ===== */
+/* Responsive */
 @media (max-width: 768px) {
-  .aboutSection {
-    flex-direction: column;
-    padding: 1rem;
-    min-height: auto;
-    padding-bottom: 3rem;
+  .sectionTitle {
+    font-size: 2.5rem;
   }
-
-  .mainContainer {
-    max-width: 100%;
-    padding: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .sideContainer {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    transform: none !important;
-    opacity: 1;
-    filter: none;
-  }
-
-  .leftContainer, 
-  .rightContainer {
-    left: auto;
-    right: auto;
-    transform: none !important;
-  }
-
-  .btechContainer {
-    padding: 1.5rem 1rem;
-  }
-
-  .logoCircle {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 1rem;
-  }
-
-  .infoStack {
-    margin: 1.5rem 0;
-    gap: 1rem;
-  }
-
-  .infoItem {
-    padding: 0.8rem;
-  }
-
-  .infoItem h3 {
-    font-size: 1rem;
-  }
-
-  .infoItem p {
-    font-size: 0.9rem;
-  }
-
-  .performanceButton {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-    width: 100%;
-  }
-
-  /* Modal adjustments */
-  .modalBackground {
-    width: 95%;
-    max-height: 90vh;
-  }
-
-  .modalContent {
-    padding: 1.5rem;
-  }
-
-  .modalTitle {
-    font-size: 1.8rem;
-  }
-
-  .modalSubtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .semesterGrid {
+  
+  .gridContainer {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
-}
-
-@media (max-width: 480px) {
-  .logoCircle {
-    width: 80px;
-    height: 80px;
-  }
-
-  .infoItem {
-    padding: 0.6rem;
-  }
-
-  .modalTitle {
-    font-size: 1.5rem;
+  
+  .profileCard {
+    aspect-ratio: auto;
   }
 }

@@ -97,7 +97,7 @@ const Skills: FC = () => {
     {
       title: 'DSA Certification',
       id: 'dsa-certificate',
-      available: false
+      available: true
     }
   ];
 
