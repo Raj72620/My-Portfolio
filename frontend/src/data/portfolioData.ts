@@ -99,8 +99,8 @@ export const PERSONAL_INFO = {
 
 export const SECONDARY_PROOF = [
   { label: '2026 IT Graduate', sub: 'SVCET · 8.4 CGPA', icon: 'academic' },
-  { label: '300+ DSA Solved', sub: 'GeeksforGeeks & LeetCode', icon: 'code' },
-  { label: 'Institute Rank #1', sub: 'GeeksforGeeks Leaderboard', icon: 'trophy' },
+  { label: 'GFG Institute Rank #1', sub: 'Campus Coding Leaderboard', icon: 'trophy' },
+  { label: 'Top 10% LeetCode Contest', sub: 'Global Contest Rating', icon: 'code' },
   { label: 'SIH 2024 Grand Finalist', sub: 'Smart India Hackathon', icon: 'award' }
 ];
 
@@ -119,9 +119,9 @@ export const QUICK_PROOF = [
   },
   {
     pillar: 'SOLVE',
-    title: '300+ Algorithmic Problems',
+    title: 'Rank #1 GFG · Top 10% LeetCode',
     description:
-      'Rank #1 in college institution on GeeksforGeeks with over 300 verified solutions spanning Trees, Dynamic Programming, Graphs, Heaps, and Two-Pointer paradigms.'
+      'Rank #1 in college institution on GeeksforGeeks and competing in the top 10% globally in official LeetCode coding contests across complex data structure paradigms.'
   },
   {
     pillar: 'CONTRIBUTE',
@@ -736,8 +736,12 @@ export const ENGINEERING_FOUNDATIONS = [
 
 export const PROBLEM_SOLVING_DATA = {
   headline: 'Problem Solving & Algorithmic Rigor',
-  totalProblemsSolved: '300+',
-  instituteRank: '#1',
+  gfgRank: '#1',
+  gfgRankLabel: 'Institute Rank — GeeksforGeeks',
+  gfgRankDesc: 'Rank #1 across SVCET campus leaderboard with sustained algorithmic excellence.',
+  leetcodeRank: 'Top 10%',
+  leetcodeRankLabel: 'LeetCode Contest Rating',
+  leetcodeRankDesc: 'Competing in the top 10% globally across official LeetCode algorithmic contests.',
   instituteName: 'SVCET — GeeksforGeeks Leaderboard',
   platforms: [
     {
@@ -745,13 +749,13 @@ export const PROBLEM_SOLVING_DATA = {
       rank: 'Institute Rank #1',
       profileUrl: 'https://www.geeksforgeeks.org/profile/nishanthraj',
       altUrl: 'https://www.geeksforgeeks.org/user/renusin39mc/',
-      highlight: '300+ Problems Solved with consistent problem-solving streak'
+      highlight: 'Rank #1 across SVCET on GeeksforGeeks with verified problem solving'
     },
     {
       name: 'LeetCode',
-      rank: 'Active Competitor',
+      rank: 'Top 10% Global Contests',
       profileUrl: 'https://leetcode.com/u/Nishanth-Raj/',
-      highlight: 'Practicing medium-to-hard algorithmic patterns and contest challenges'
+      highlight: 'Competing in the top 10% worldwide in official weekly coding contests'
     }
   ],
   topics: [
@@ -795,7 +799,7 @@ export const ACHIEVEMENTS: CertificateItem[] = [
     category: 'problem-solving',
     badge: 'College Rank #1',
     image: dsaCertImg,
-    summary: 'Achieved and sustained the #1 rank across SVCET on the GeeksforGeeks coding leaderboard with over 300 algorithm problems solved.'
+    summary: 'Achieved and sustained the #1 rank across SVCET on the GeeksforGeeks coding leaderboard, alongside competing in the top 10% in LeetCode contests.'
   },
   {
     id: 'pro-solvo-certificate',

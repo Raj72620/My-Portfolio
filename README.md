@@ -21,7 +21,7 @@ This repository houses the complete source code for **Nishanth Raj's** engineeri
 
 ## 🚀 Key Sections & Information Architecture
 
-1. **Hero & Quick Proof:** Core technical statement, 4 primary pillars (**Build**, **Teach**, **Solve**, **Contribute**), and verified credentials (2026 IT Graduate, 300+ DSA Problems Solved, GFG Institute Rank #1, SIH 2024 Grand Finalist).
+1. **Hero & Quick Proof:** Core technical statement, 4 primary pillars (**Build**, **Teach**, **Solve**, **Contribute**), and verified credentials (2026 IT Graduate, GFG Institute Rank #1, Top 10% LeetCode Contest, SIH 2024 Grand Finalist).
 2. **Selected Work (Flagship Projects):**
    - **DiscussionHub:** Technical community forum with categorized threads, JWT auth, and Socket.IO real-time notifications.
    - **Digital Voting Platform:** Blockchain voting architecture utilizing Solidity smart contracts for ballot immutability and off-chain caching for candidate metadata.
@@ -30,7 +30,7 @@ This repository houses the complete source code for **Nishanth Raj's** engineeri
 3. **17-Point Engineering Case Studies:** Each flagship project features an interactive case study covering: Overview, Problem, Objective, What I Built, Features, System Architecture (ASCII data flow), Tech Decisions, Database Schema, API Contracts, Performance & Labeled Metrics, Challenges, Solutions, Limitations, Learnings, Future Work, GitHub, and Live Demo.
 4. **What I've Done:** Technical mentoring (100+ students across colleges), independent full-stack engineering, practical applied AI integrations (LLM APIs, prompt engineering, code assistance), and open-source contributions.
 5. **Languages & Engineering:** Focused toolchain (Java, JavaScript/TypeScript, SQL) alongside 6 core foundations: Full-Stack, Backend & APIs, Real-Time Systems, Databases, Core Computer Science, and System Design.
-6. **Problem Solving:** 300+ verified solutions across GeeksforGeeks and LeetCode covering Arrays, Hashing, Trees, Graphs, DP, Greedy, Binary Search, and Heaps.
+6. **Problem Solving:** GeeksforGeeks Institute Rank #1 and competing in the top 10% globally in official LeetCode contests, covering Arrays, Hashing, Trees, Graphs, DP, Greedy, Binary Search, and Heaps.
 7. **Verified Achievements & Lightbox:** National Grand Finalist in Smart India Hackathon 2024, 2nd Place Runner-Up in Intellecthon, GFG Rank #1, ProSolvo 1st Place Champion, and MongoDB Certified Developer with high-res certificate verification.
 8. **Progression, Services & Contact:** 2024–2026 chronological trajectory, freelance development services, and an active contact form backed by MongoDB persistence and Nodemailer email dispatch.
 

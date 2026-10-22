@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { PROBLEM_SOLVING_DATA } from '../data/portfolioData';
-import { FaExternalLinkAlt, FaCode, FaTrophy, FaCheckCircle } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaTrophy, FaCheckCircle, FaChartLine } from 'react-icons/fa';
 import { SiGeeksforgeeks, SiLeetcode } from 'react-icons/si';
 import styles from '../styles/ProblemSolving.module.css';
 
@@ -18,28 +18,24 @@ export const ProblemSolving: FC = () => {
 
         {/* Large Stat Counters & Profiles Row */}
         <div className={styles.statsRow}>
-          {/* Stat 1: 300+ Problems */}
-          <div className={`tech-card ${styles.statCard}`}>
-            <div className={styles.statIconBox}>
-              <FaCode />
-            </div>
-            <div className={styles.statNumber}>{PROBLEM_SOLVING_DATA.totalProblemsSolved}</div>
-            <h3 className={styles.statLabel}>DSA Problems Solved</h3>
-            <p className={styles.statDesc}>
-              Solved across competitive platforms with high emphasis on optimal edge cases and recursion depth.
-            </p>
-          </div>
-
-          {/* Stat 2: Institute Rank #1 */}
+          {/* Stat 1: Institute Rank #1 (GFG) */}
           <div className={`tech-card ${styles.statCard} ${styles.highlightCard}`}>
             <div className={`${styles.statIconBox} ${styles.trophyIcon}`}>
               <FaTrophy />
             </div>
-            <div className={styles.statNumber}>{PROBLEM_SOLVING_DATA.instituteRank}</div>
-            <h3 className={styles.statLabel}>Institute Rank — GeeksforGeeks</h3>
-            <p className={styles.statDesc}>
-              {PROBLEM_SOLVING_DATA.instituteName} leaderboard with verified campus ranking.
-            </p>
+            <div className={styles.statNumber}>{PROBLEM_SOLVING_DATA.gfgRank}</div>
+            <h3 className={styles.statLabel}>{PROBLEM_SOLVING_DATA.gfgRankLabel}</h3>
+            <p className={styles.statDesc}>{PROBLEM_SOLVING_DATA.gfgRankDesc}</p>
+          </div>
+
+          {/* Stat 2: Competing Top 10% in LeetCode Contests */}
+          <div className={`tech-card ${styles.statCard} ${styles.leetcodeHighlightCard}`}>
+            <div className={`${styles.statIconBox} ${styles.chartIcon}`}>
+              <FaChartLine />
+            </div>
+            <div className={styles.statNumber}>{PROBLEM_SOLVING_DATA.leetcodeRank}</div>
+            <h3 className={styles.statLabel}>{PROBLEM_SOLVING_DATA.leetcodeRankLabel}</h3>
+            <p className={styles.statDesc}>{PROBLEM_SOLVING_DATA.leetcodeRankDesc}</p>
           </div>
 
           {/* Verified Profiles Box */}

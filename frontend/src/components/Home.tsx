@@ -33,7 +33,7 @@ export const Home: FC = () => {
       {/* 6. Engineering: How I Build Software */}
       <Engineering />
 
-      {/* 7. Problem Solving: 300+ DSA, GFG Rank #1 */}
+      {/* 7. Problem Solving: GFG Rank #1, Top 10% LeetCode Contest */}
       <ProblemSolving />
 
       {/* 8. Verified Achievements & Honors */}
