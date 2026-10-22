@@ -1,104 +1,74 @@
-import { FaLinkedin, FaGithub, FaFacebook, FaArrowUp } from 'react-icons/fa';
-import { SiGeeksforgeeks, SiLeetcode } from 'react-icons/si';
+import { FC } from 'react';
+import { PERSONAL_INFO } from '../data/portfolioData';
+import { FaGithub, FaLinkedin, FaEnvelope, FaFilePdf, FaArrowUp } from 'react-icons/fa';
 import styles from '../styles/Footer.module.css';
 
-const Footer = () => {
-  const socialLinks = [
-    {
-      icon: <FaLinkedin className={styles.icon} />,
-      url: 'https://www.linkedin.com/in/nishanth-singh/',
-      label: 'LinkedIn'
-    },
-    {
-      icon: <FaGithub className={styles.icon} />,
-      url: 'https://github.com/Raj72620',
-      label: 'GitHub'
-    },
-    {
-      icon: <FaFacebook className={styles.icon} />,
-      url: 'https://www.facebook.com/nishanth.raj.50552?mibextid=ZbWKwL',
-      label: 'Facebook'
-    }
-  ];
-
-  const codingProfiles = [
-    {
-      icon: <SiGeeksforgeeks className={styles.codingIcon} />,
-      url: 'https://www.geeksforgeeks.org/user/renusin39mc/',
-      label: 'GeeksForGeeks'
-    },
-    {
-      icon: <SiLeetcode className={styles.codingIcon} />,
-      url: 'https://leetcode.com/u/Nishanth-Raj/',
-      label: 'LeetCode'
-    }
-  ];
-
+export const Footer: FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.leftSection}>
-            <div className={styles.copyright}>
-              © {new Date().getFullYear()} Nishanth Raj. All rights reserved.
-            </div>
-            <div className={styles.legalLinks}>
-              <a href="/privacy" className={styles.legalLink}>Privacy Policy</a>
-              <span className={styles.divider}>|</span>
-              <a href="/terms" className={styles.legalLink}>Terms of Service</a>
-            </div>
+      <div className="content-container">
+        <div className={styles.footerContent}>
+          {/* Identity Left */}
+          <div className={styles.leftCol}>
+            <span className={styles.brandName}>{PERSONAL_INFO.name.toUpperCase()}</span>
+            <span className={styles.brandTitle}>Software Developer · Full-Stack Engineer</span>
+            <p className={styles.copyright}>© 2026 Nishanth Raj. All rights reserved.</p>
           </div>
 
-          {/* New Middle Section */}
-          <div className={styles.middleSection}>
-            <div className={styles.codingProfiles}>
-              {codingProfiles.map((profile, index) => (
-                <a
-                  key={index}
-                  href={profile.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.codingLink}
-                  aria-label={profile.label}
-                >
-                  <span className={styles.codingLinkInner}>
-                    {profile.icon}
-                    <span className={styles.codingLinkText}>{profile.label}</span>
-                  </span>
-                  <span className={styles.codingLinkShine}></span>
-                </a>
-              ))}
-            </div>
-          </div>
+          {/* Links Right */}
+          <div className={styles.rightCol}>
+            <div className={styles.linksRow}>
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerLink}
+              >
+                <FaGithub />
+                <span>GitHub</span>
+              </a>
 
-          <div className={styles.rightSection}>
-            <div className={styles.socialLinks}>
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
+              <a
+                href={PERSONAL_INFO.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerLink}
+              >
+                <FaLinkedin />
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                href={`mailto:${PERSONAL_INFO.email}`}
+                className={styles.footerLink}
+              >
+                <FaEnvelope />
+                <span>Email</span>
+              </a>
+
+              <a
+                href={PERSONAL_INFO.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerLink}
+              >
+                <FaFilePdf />
+                <span>Resume</span>
+              </a>
             </div>
-            <button 
+
+            <button
+              type="button"
+              className={styles.backToTopBtn}
               onClick={scrollToTop}
-              className={styles.backToTop}
-              aria-label="Scroll to top"
+              aria-label="Scroll to top of page"
             >
-              <FaArrowUp className={styles.arrowIcon} />
+              <span>Back to Top</span>
+              <FaArrowUp />
             </button>
           </div>
         </div>

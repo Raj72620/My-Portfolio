@@ -1,112 +1,111 @@
-import { FC, useRef, useEffect, useState } from 'react';
+import { FC } from 'react';
+import { PERSONAL_INFO } from '../data/portfolioData';
+import { FaGraduationCap, FaMapMarkerAlt, FaFilePdf, FaCheck } from 'react-icons/fa';
 import styles from '../styles/About.module.css';
-import gfgImage from '../assets/gfg image.png';
-import githubImage from '../assets/github image.png';
 
-const CodingProfiles: FC = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-
-    const createStars = () => {
-      if (!containerRef.current) return;
-      const container = containerRef.current;
-
-      for (let i = 0; i < 50; i++) {
-        const star = document.createElement('div');
-        star.className = styles.star;
-        const size = Math.random() * 2 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.animationDelay = `${Math.random() * 5}s`;
-        star.style.animationDuration = `${2 + Math.random() * 3}s`;
-        container.appendChild(star);
-      }
-    };
-
-    createStars();
-
-    return () => {
-      if (containerRef.current) {
-        const stars = containerRef.current.querySelectorAll(`.${styles.star}`);
-        stars.forEach(star => star.remove());
-      }
-    };
-  }, []);
-
-  if (!isMounted) {
-    return <section id="about" className={styles.aboutSection}></section>;
-  }
-
+export const About: FC = () => {
   return (
-    <section id="about" className={styles.aboutSection} ref={containerRef}>
-      <div className={styles.nebula}></div>
-
-      <div className={styles.profilesHeader}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.titleGlow}>Featured</span>
-        </h2>
-        <p className={styles.sectionSubtitle}>Connecting through code and contributions</p>
-      </div>
-
-      <div className={styles.gridContainer}>
-        {/* GeeksForGeeks Container */}
-        <div className={styles.profileCardWrapper}>
-          <div className={styles.lightingBorder}></div>
-          <a
-            href="https://www.geeksforgeeks.org/profile/nishanthraj"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.profileCard} ${styles.gfgCard}`}
-          >
-            <div className={styles.cardContent}>
-              <div className={styles.imageContainer}>
-                <img src={gfgImage} alt="GeeksForGeeks" className={styles.profileImg} />
-                <div className={styles.imageOverlay}></div>
-              </div>
-              <div className={styles.cardInfo}>
-                <h3>GeeksForGeeks</h3>
-                <div className={styles.statusBadge}>Profile Active</div>
-                <p>Mastering algorithms and data structures through consistent practice.</p>
-              </div>
-            </div>
-            <div className={styles.cardGlow}></div>
-          </a>
+    <section className="section-wrapper" id="about">
+      <div className="content-container">
+        <div className="section-header">
+          <div className="section-tag">Identity & Background</div>
+          <h2 className="section-title">About Nishanth Raj</h2>
+          <p className="section-subtitle">
+            Software developer, problem solver, and technical instructor committed to verifiable engineering standards and transparent craftsmanship.
+          </p>
         </div>
 
-        {/* GitHub Container */}
-        <div className={styles.profileCardWrapper}>
-          <div className={styles.lightingBorder}></div>
-          <a
-            href="https://github.com/Raj72620"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.profileCard} ${styles.githubCard}`}
-          >
-            <div className={styles.cardContent}>
-              <div className={styles.imageContainer}>
-                <img src={githubImage} alt="GitHub" className={styles.profileImg} />
-                <div className={styles.imageOverlay}></div>
-              </div>
-              <div className={styles.cardInfo}>
-                <h3>GitHub</h3>
-                <div className={styles.statusBadge}>Open Source</div>
-                <p>Building innovative solutions and contributing to the developer community.</p>
+        <div className={styles.aboutGrid}>
+          {/* Main Narrative Column */}
+          <div className={styles.narrativeCol}>
+            <div className={`tech-card ${styles.storyCard}`}>
+              <h3 className={styles.storyHeading}>Engineering Journey & Mindset</h3>
+              <p>
+                I am a 2026 Information Technology graduate and independent software developer focused on architecting practical, reliable, and scalable web platforms.
+              </p>
+              <p>
+                My work spans modular full-stack development, backend RESTful systems, real-time WebRTC media pipelines, and applied AI integrations. Alongside building software, I have invested significant effort into technical education, conducting training workshops across engineering colleges to help students master Data Structures & Algorithms, OOP principles, and clean system design.
+              </p>
+              <p>
+                I prioritize deep technical understanding over surface-level frameworks: breaking algorithmic bottlenecks down to time-space complexity, profiling WebSocket network overhead, and enforcing strict data validation contracts across every API.
+              </p>
+
+              <div className={styles.coreValues}>
+                <span className={styles.valuesTitle}>CORE ENGINEERING PRINCIPLES:</span>
+                <div className={styles.valuesList}>
+                  <div className={styles.valueItem}>
+                    <FaCheck className={styles.checkIcon} />
+                    <span><strong>Truth First:</strong> Every claim backed by working code, repository audits, or measured results.</span>
+                  </div>
+                  <div className={styles.valueItem}>
+                    <FaCheck className={styles.checkIcon} />
+                    <span><strong>Low Latency & Resilience:</strong> Designing gracefully degrading systems with sensible timeouts.</span>
+                  </div>
+                  <div className={styles.valueItem}>
+                    <FaCheck className={styles.checkIcon} />
+                    <span><strong>Knowledge Sharing:</strong> Elevating peers through structured algorithmic mentoring and open-source code.</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className={styles.cardGlow}></div>
-          </a>
+          </div>
+
+          {/* Education & Meta Details Column */}
+          <div className={styles.metaCol}>
+            {/* Education Box */}
+            <div className={`tech-card ${styles.eduCard}`}>
+              <div className={styles.eduHeader}>
+                <div className={styles.eduIconBox}>
+                  <FaGraduationCap />
+                </div>
+                <div>
+                  <span className={styles.eduTag}>FORMAL EDUCATION</span>
+                  <h4 className={styles.degreeTitle}>{PERSONAL_INFO.education.degree}</h4>
+                </div>
+              </div>
+
+              <p className={styles.institutionName}>{PERSONAL_INFO.education.institution}</p>
+
+              <div className={styles.eduMetricsRow}>
+                <div className={styles.eduMetric}>
+                  <span className={styles.eduMetricKey}>GRADUATION</span>
+                  <span className={styles.eduMetricVal}>{PERSONAL_INFO.education.graduationYear}</span>
+                </div>
+                <div className={styles.eduMetric}>
+                  <span className={styles.eduMetricKey}>CGPA</span>
+                  <span className={styles.eduMetricVal}>{PERSONAL_INFO.education.cgpa}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Location & Resume Card */}
+            <div className={`tech-card ${styles.locationCard}`}>
+              <div className={styles.locRow}>
+                <FaMapMarkerAlt className={styles.locIcon} />
+                <div>
+                  <span className={styles.locLabel}>LOCATION & RELOCATION</span>
+                  <p className={styles.locVal}>{PERSONAL_INFO.location} · Open to Remote & On-site</p>
+                </div>
+              </div>
+
+              <div className={styles.resumeBox}>
+                <a
+                  href={PERSONAL_INFO.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{ width: '100%' }}
+                >
+                  <FaFilePdf />
+                  <span>Download / View Official Resume</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className={styles.decorationCircle}></div>
-      <div className={`${styles.decorationCircle} ${styles.circle2}`}></div>
     </section>
   );
 };
 
-export default CodingProfiles;
+export default About;

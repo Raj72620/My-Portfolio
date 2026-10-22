@@ -1,257 +1,196 @@
-/* About.module.css - Futuristic Coding Profiles */
-
-.aboutSection {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: #020205;
-  padding: 4rem 2rem;
-  z-index: 1;
-}
-
-/* Background Effects */
-.nebula {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(107, 169, 220, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(138, 107, 220, 0.05) 0%, transparent 40%);
-  z-index: -1;
-}
-
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.3;
-  animation: twinkle linear infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* Header */
-.profilesHeader {
-  text-align: center;
-  margin-bottom: 4rem;
-  z-index: 2;
-}
-
-.sectionTitle {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-.titleGlow {
-  background: linear-gradient(90deg, #6ba9dc, #8a6bdc, #6ba9dc);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
-}
-
-@keyframes shine {
-  to { background-position: 200% center; }
-}
-
-.sectionSubtitle {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-}
-
-/* Grid Container */
-.gridContainer {
+.aboutGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
-  width: 100%;
-  max-width: 1100px;
-  z-index: 2;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
 }
 
-/* Profile Card */
-.profileCardWrapper {
-  position: relative;
-  padding: 2px;
-  border-radius: 24px;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.profileCardWrapper:hover {
-  transform: translateY(-15px) scale(1.02);
-}
-
-.lightingBorder {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    transparent, 
-    rgba(107, 169, 220, 0.8), 
-    transparent 30%, 
-    transparent 50%, 
-    rgba(138, 107, 220, 0.8), 
-    transparent 80%
-  );
-  animation: rotateBorder 4s linear infinite;
-  z-index: 0;
-}
-
-@keyframes rotateBorder {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.profileCard {
-  position: relative;
-  display: block;
-  width: 100%;
-  aspect-ratio: 16/10;
-  background: rgba(10, 10, 25, 0.95);
-  border-radius: 22px;
-  text-decoration: none;
-  overflow: hidden;
-  z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cardContent {
-  padding: 2rem;
-  height: 100%;
+.narrativeCol {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.imageContainer {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(107, 169, 220, 0.2);
+.storyCard {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.profileImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
+.storyHeading {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
 }
 
-.profileCardWrapper:hover .profileImg {
-  transform: scale(1.1);
+.storyCard p {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
-.imageOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
+.coreValues {
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
 }
 
-.cardInfo h3 {
-  color: white;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  letter-spacing: 1px;
+.valuesTitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.85rem;
 }
 
-.statusBadge {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  background: rgba(107, 169, 220, 0.1);
-  border: 1px solid rgba(107, 169, 220, 0.3);
-  border-radius: 20px;
-  color: #6ba9dc;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+.valuesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.cardInfo p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.95rem;
+.valueItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
-/* Card Glow Effects */
-.cardGlow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(107, 169, 220, 0.15) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
+.checkIcon {
+  color: #10b981;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
-.profileCardWrapper:hover .cardGlow {
-  opacity: 1;
+.valueItem strong {
+  color: #f1f5f9;
 }
 
-/* Decoration */
-.decorationCircle {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  border: 1px dashed rgba(107, 169, 220, 0.1);
-  top: 10%;
-  right: -200px;
-  animation: spin 60s linear infinite;
-  z-index: 0;
+.metaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
-.circle2 {
-  width: 600px;
-  height: 600px;
-  bottom: -300px;
-  left: -300px;
-  animation-direction: reverse;
+.eduCard {
+  padding: 2rem;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.eduHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .sectionTitle {
-    font-size: 2.5rem;
-  }
-  
-  .gridContainer {
+.eduIconBox {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.eduTag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #38bdf8;
+  display: block;
+}
+
+.degreeTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.institutionName {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.eduMetricsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.eduMetric {
+  display: flex;
+  flex-direction: column;
+}
+
+.eduMetricKey {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.eduMetricVal {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.locationCard {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.locRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.locIcon {
+  color: var(--accent-blue);
+  font-size: 1.25rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.locLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.locVal {
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.resumeBox {
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 960px) {
+  .aboutGrid {
     grid-template-columns: 1fr;
-    padding: 0 1rem;
-  }
-  
-  .profileCard {
-    aspect-ratio: auto;
+    gap: 2rem;
   }
 }
