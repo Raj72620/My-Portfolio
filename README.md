@@ -132,7 +132,7 @@ npm run build
 - **Email:** [nishanthraj9618@gmail.com](mailto:nishanthraj9618@gmail.com)
 - **LinkedIn:** [linkedin.com/in/nishanth-singh](http://www.linkedin.com/in/nishanth-singh)
 - **GitHub:** [github.com/Raj72620](https://github.com/Raj72620)
-- **Resume:** [View Official Resume](https://drive.google.com/file/d/1xiT24E0DgYygnpvr76QwHVpYqKKpMpVy/view?usp=sharing)
+- **Resume:** [View Official Resume](https://drive.google.com/file/d/1dZgvAF1NYI1mRIHPLL0nlNaWBb_dBeFi/view?usp=drive_link)
 
 ---
 

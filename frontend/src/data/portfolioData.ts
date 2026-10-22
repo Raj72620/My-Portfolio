@@ -86,7 +86,7 @@ export const PERSONAL_INFO = {
   gfg: 'https://www.geeksforgeeks.org/profile/nishanthraj',
   gfgAlt: 'https://www.geeksforgeeks.org/user/renusin39mc/',
   leetcode: 'https://leetcode.com/u/Nishanth-Raj/',
-  resumeUrl: 'https://drive.google.com/file/d/1xiT24E0DgYygnpvr76QwHVpYqKKpMpVy/view?usp=sharing',
+  resumeUrl: 'https://drive.google.com/file/d/1dZgvAF1NYI1mRIHPLL0nlNaWBb_dBeFi/view?usp=drive_link',
   location: 'Chittoor, Andhra Pradesh, India',
   education: {
     degree: 'B.Tech — Information Technology',
